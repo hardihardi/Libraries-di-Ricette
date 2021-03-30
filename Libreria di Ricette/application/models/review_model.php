@@ -7,27 +7,12 @@ class Review_model extends CI_Model
     {
         parent::__construct();
     }
-    public function tambahReviewBaru()
+    public function tambahReviewBaru($data)
     {
-        $data = [
-            'idReview' => htmlspecialchars($this->input->post('idReview', true)),
-            'idResep' => htmlspecialchars($this->input->post('idResep', true)),
-            'idMember' => htmlspecialchars($this->input->post('idMember', true)),
-            'rating' => htmlspecialchars($this->input->post('rating', true)),
-            'isi' => htmlspecialchars($this->input->post('isi', true)),
-            'tglReview' => htmlspecialchars($this->input->post('tglReview', true)),
-        ];
+        $this->db->insert('review', $data);
     }
-    public function editReview($id)
+    public function editReview($id, $data)
     {
-        $data = array(
-            'idReview' => htmlspecialchars($this->input->post('idReview', true)),
-            'idResep' => htmlspecialchars($this->input->post('idResep', true)),
-            'idMember' => htmlspecialchars($this->input->post('idMember', true)),
-            'rating' => htmlspecialchars($this->input->post('rating', true)),
-            'isi' => htmlspecialchars($this->input->post('isi', true)),
-            'tglReview' => htmlspecialchars($this->input->post('tglReview', true)),
-        );
         $this->db->where('idReview', $id);
         return $this->db->update('review', $data);
     }
