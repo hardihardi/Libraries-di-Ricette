@@ -1,0 +1,18 @@
+.checked {
+color: orange;
+}
+#carouselExampleIndicators{
+	margin-bottom: 20px;
+}
+.recepie_area {
+	padding-top: 0px;
+}
+h2 {
+	padding-bottom: 5px;
+}
+.card-title{
+	margin-bottom: 0px;
+}
+p {
+	margin-bottom: 0px;
+}
