@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="<?= base_url('assets/css/stylesheet.css/')?>">
   </head>
   <body>
     <div class="container">
