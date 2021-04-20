@@ -109,3 +109,12 @@ input[type="radio"]:checked ~ .mark::before{
     background: #73ee3a;
     color:#fff;
 }
+
+/* LOGIN */
+.inputs-login{
+    width: 250px;
+    height: 470px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
