@@ -28,28 +28,5 @@ class AccountController extends CI_Controller {
 			$this->load->view('login');
 		}
 	}
-
-    public function register() {
-        $dataUser = array(
-            "username" => $this->input->post('username', true),
-            "password" => $this->input->post('password', true),
-            "isAdmin" => 0
-        );
-
-        $daftar = $this->Account->register("user", $dataUser);
-        if ($daftar) {
-            $this->load->view('homepage');
-        } else {
-            $this->load->view('register');
-        }
-    }
-
-	public function guest()
-	{
-		$data['username'] = "Guest";
-		$this->session->set_userdata('username', $data['username']);
-		redirect(base_url());
-	}
-
 }
 ?>

@@ -7,12 +7,12 @@
   <body>
     <div class="container">
         <div class="inputs">
-            <form action="<?=site_url?>" method="POST">
+            <form action="<?=site_url('AccountController/login')?>" method="POST">
                 <h2 style="text-align: center;">Login</h2>
-                <label><b>Email Address</b></label>
-                    <input type="email" placeholder="Email Adress" class="input-field"/>
+                <label><b>Username</b></label>
+                    <input type="text" name="username" placeholder="Username" class="input-field"/>
                 <label><b>Password</b></label>
-                <input type="password" placeholder="Password" class="input-field"/>
+                <input type="password" name="password" placeholder="Password" class="input-field"/>
                 <div class="btn">
                     <button>Login</button>
                 </div>
