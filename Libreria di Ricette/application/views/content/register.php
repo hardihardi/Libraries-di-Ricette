@@ -8,9 +8,9 @@
     <div class="container">
         <div class="inputs">
             <label>Full Name</label>
-            <input type="text" placeholder="Your Name" class="input-field"/>
+            <input type="text" placeholder="Your Name" class="input-field" value="<?= set_value('nama') ?>">
             <label>Email Adress</label>
-            <input type="email" placeholder="Email Address" class="input-field"/>
+            <input type="email" placeholder="Email Address" class="input-field" value="<?= set_value('email') ?>">
             <label>Gender</label>
             <div class="radio-btn">
 
@@ -28,7 +28,7 @@
 
         </div>
         <label>Date of Birth</label>>
-        <input type="Date" placeholder="DD/MM/YYY" class="input-field"/>
+        <input type="Date" placeholder="DD/MM/YYY" class="input-field" value="<?= set_value('tanggalLahir') ?>">
         <div class="text">
             <input type="checkbox"/>
             <p>I accept the <a href="#">terms & conditions</a></p>
