@@ -7,6 +7,7 @@
   <body>
     <div class="container">
         <div class="inputs">
+					// Form pengisian data diri member baru berisikan Username dan Password
             <form action="<?=site_url('AccountController/register')?>" method="POST">
                 <h2 style="text-align: center;">Daftar</h2>
                 <label><b>Username</b></label>
