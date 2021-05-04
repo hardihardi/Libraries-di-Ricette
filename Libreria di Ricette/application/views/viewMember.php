@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container"> 
 		<div class="row" style="min-height: 37rem">
 			<div class="col-md-12">
 				<div>
@@ -6,29 +6,8 @@
 						<h3>Member Table</h3>
 					</div>
 					<br>
-					<!-- <?php
-					$template = array(
-						'table_open' => '<table id="member" class="table-hover table-striped" cellspacing="0" style="width:100%">',
-						'thead_open' => '<thead class="table-info text-center">',
-						'tbody_open' => '<tbody class ="text-center">',
-					);
-					$this->table->set_template($template);
-					$this->table->set_heading('idMember', 'username', 'Action');
-
-					foreach ($member_list as $di) {
-						$this->table->add_row(
-							$di['idMember'],
-							$di['username'],
-							'<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalViewMember<?= $di["idMember"]?>">
-  							view Member
-							</button>'
-						);
-					}
-					echo $this->table->generate();
-					$this->table->clear();
-					?> -->
-
 					<table class="table">
+						//menampilkan header yang berisikan ID Member, Username, dan Action untuk menampilkan modal dari user yang dipilih
 						<thead>
 							<tr>
 							<th scope="col">ID Member</th>
@@ -41,7 +20,7 @@
 							<tr>
 								<td><?= $di['idMember'] ?></td>
 								<td><?= $di['username'] ?></td>
-								<td>
+								<td> //tombol view member yang digunakan untuk memunculkan modal dari user yang dipilih
 									<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalViewMember<?= $di["idMember"]?>">
 									view Member
 									</button>
@@ -57,7 +36,7 @@
 </div>
 
 
-
+// Menampilkan modal dari akun yang dipilih
 <!-- Modal view Account -->
 <?php foreach ($member_list as $m) {?>
     <div class="modal fade" id="modalViewMember<?= $m['idMember']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
