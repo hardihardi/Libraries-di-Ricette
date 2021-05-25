@@ -8,29 +8,27 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <!-- Place favicon.ico in the root directory -->
-
     <!-- CSS here -->
-    <link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../../assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="../../../assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../assets/css/themify-icons.css">
-    <link rel="stylesheet" href="../../../assets/css/nice-select.css">
-    <link rel="stylesheet" href="../../../assets/css/flaticon.css">
-    <link rel="stylesheet" href="../../../assets/css/gijgo.css">
-    <link rel="stylesheet" href="../../../assets/css/animate.min.css">
-    <link rel="stylesheet" href="../../../assets/css/slick.css">
-    <link rel="stylesheet" href="../../../assets/css/slicknav.css">
-    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/owl.carousel.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/magnific-popup.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/font-awesome.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/themify-icons.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/nice-select.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/flaticon.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/gijgo.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/animate.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/slick.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/slicknav.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../assets/css/home.css">
+    <link rel="stylesheet" href="<?= base_url('assets/css/home.css') ?>">
 </head>
 
 <body>
     <!-- header-start -->
+	//Header berisi Home, Recipes, dan About
     <header>
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area ">
@@ -48,21 +46,8 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="index.html" style="color: white;">home</a></li>
-                                        <li><a href="about.html" style="color: white;">about</a></li>
                                         <li><a href="Recipes.html" style="color: white;">Recipes</a></li>
-                                        <li><a href="#" style="color: white;">blog <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="single-blog.html">single-blog</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#" style="color: white;">pages <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="recipes_details.html">Recipes Details</a></li>
-                                                <li><a href="elements.html">elements</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html" style="color: white;">Contact</a></li>
+										<li><a href="about.html" style="color: white;">about</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -79,6 +64,7 @@
     <!-- header-end -->
 <body>
     <!-- slider_area_start -->
+	//Slider digunakan untuk menampilkan iklan atau promo yang tersedia
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -87,13 +73,13 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="297327022.jpg" class="d-block w-100">
+            <img src="assets/img/297327022.jpg" class="d-block w-100">
           </div>
           <div class="carousel-item">
-            <img src="297327022.jpg" class="d-block w-100">
+            <img src="assets/img/297327022.jpg" class="d-block w-100">
           </div>
           <div class="carousel-item">
-            <img src="297327022.jpg" class="d-block w-100">
+            <img src="assets/img/297327022.jpg" class="d-block w-100">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -108,6 +94,7 @@
     <!-- slider_area_end -->
     
     <!-- recepie_area_start  -->
+	//Menampilkan resep-resep yang tersedia, dapat dilakukan sort berdasarkan triteria tertentu, selain itu dapat juga dilakukan pencarian resep berdasarkan nama hidangan
     <div class="recepie_area">
       <div class="container">
         <div class="row" style="margin-bottom: 20px">
@@ -129,7 +116,7 @@
         </div>
         <div class="row">
           <div class="col-xl-4 col-lg-4 col-md-6">
-            <img class="card-img-top" src="img/recepie/images.jfif" alt="Card image cap">
+            <img class="card-img-top" src="<?= base_url('assets/css/home.css') ?>" alt="Card image cap">
             <div class="card-body">
               <h3 class="card-title">Card title</h3>
               <span class="fa fa-star checked"></span>
@@ -143,21 +130,7 @@
             </div>
           </div>
           <div class="col-xl-4 col-lg-4 col-md-6">
-            <img class="card-img-top" src="img/recepie/images.jfif" alt="Card image cap">
-            <div class="card-body" style="">
-              <h3 class="card-title">Card title</h3>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <p>3.0/5</p>
-              <p>By Mamank Garox</p>
-              <a href="#" class="genric-btn primary circle">View Full Recipe</a>
-            </div>
-          </div>
-          <div class="col-xl-4 col-lg-4 col-md-6">
-            <img class="card-img-top" src="img/recepie/images.jfif" alt="Card image cap">
+            <img class="card-img-top" src="<?= base_url('assets/css/home.css') ?>" alt="Card image cap">
             <div class="card-body">
               <h3 class="card-title">Card title</h3>
               <span class="fa fa-star checked"></span>
@@ -171,63 +144,7 @@
             </div>
           </div>
           <div class="col-xl-4 col-lg-4 col-md-6">
-            <img class="card-img-top" src="img/recepie/images.jfif" alt="Card image cap">
-            <div class="card-body">
-              <h3 class="card-title">Card title</h3>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <p>3.0/5</p>
-              <p>By Mamank Garox</p>
-              <a href="#" class="genric-btn primary circle">View Full Recipe</a>
-            </div>
-          </div>
-          <div class="col-xl-4 col-lg-4 col-md-6">
-            <img class="card-img-top" src="img/recepie/images.jfif" alt="Card image cap">
-            <div class="card-body">
-              <h3 class="card-title">Card title</h3>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <p>3.0/5</p>
-              <p>By Mamank Garox</p>
-              <a href="#" class="genric-btn primary circle">View Full Recipe</a>
-            </div>
-          </div>
-          <div class="col-xl-4 col-lg-4 col-md-6">
-            <img class="card-img-top" src="img/recepie/images.jfif" alt="Card image cap">
-            <div class="card-body">
-              <h3 class="card-title">Card title</h3>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <p>3.0/5</p>
-              <p>By Mamank Garox</p>
-              <a href="#" class="genric-btn primary circle">View Full Recipe</a>
-            </div>
-          </div>
-          <div class="col-xl-4 col-lg-4 col-md-6">
-            <img class="card-img-top" src="img/recepie/images.jfif" alt="Card image cap">
-            <div class="card-body">
-              <h3 class="card-title">Card title</h3>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <p>3.0/5</p>
-              <p>By Mamank Garox</p>
-              <a href="#" class="genric-btn primary circle">View Full Recipe</a>
-            </div>
-          </div>
-          <div class="col-xl-4 col-lg-4 col-md-6">
-            <img class="card-img-top" src="img/recepie/images.jfif" alt="Card image cap">
+            <img class="card-img-top" src="<?= base_url('assets/css/home.css') ?>" alt="Card image cap">
             <div class="card-body">
               <h3 class="card-title">Card title</h3>
               <span class="fa fa-star checked"></span>
@@ -381,33 +298,33 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!--/ footer  -->
 
     <!-- JS here -->
-    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/ajax-form.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/scrollIt.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/nice-select.min.js"></script>
-    <script src="js/jquery.slicknav.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/gijgo.min.js"></script>
+    <script src="<?= base_url('assets/js/vendor/modernizr-3.5.0.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/vendor/jquery-1.12.4.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/popper.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/owl.carousel.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/isotope.pkgd.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/ajax-form.js') ?>"></script>
+    <script src="<?= base_url('assets/js/waypoints.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/jquery.counterup.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/imagesloaded.pkgd.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/scrollIt.js') ?>"></script>
+    <script src="<?= base_url('assets/js/jquery.scrollUp.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/wow.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/nice-select.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/jquery.slicknav.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/jquery.magnific-popup.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/plugins.js') ?>"></script>
+    <script src="<?= base_url('assets/js/gijgo.min.js') ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <!--contact js-->
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
+    <script src="<?= base_url('assets/js/contact.js') ?>"></script>
+    <script src="<?= base_url('assets/js/jquery.ajaxchimp.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/jquery.form.js') ?>"></script>
+    <script src="<?= base_url('assets/js/jquery.validate.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/mail-script.js') ?>"></script>
 
-    <script src="js/main.js"></script>
+    <script src="<?= base_url('js/main.js') ?>"></script>
 </body>
 
 </html>
