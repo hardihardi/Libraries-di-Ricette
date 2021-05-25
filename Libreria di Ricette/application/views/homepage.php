@@ -97,19 +97,3 @@
       </div>
     </div>
     <!-- /recepie_area_end  -->
-
-       <!-- latest_trand     -->
-    <div class="latest_trand_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="trand_info text-center">
-                        <p>Thousands of recipes are waiting to be watched</p>
-                        <h3>Discover latest trending recipes</h3>
-                        <a href="#" class="boxed-btn3">View all Recipes</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/ latest_trand     -->
