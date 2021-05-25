@@ -28,5 +28,14 @@ class AdminController extends CI_Controller {
         $this->Admin->verify_member($id_member,$data);
         redirect('AdminController', 'refresh');
     }
+
+    // function to add ref toko
+    public function add_ref_toko($id_bahan) {
+        $data = array(
+            'namaToko' => $this->input->post('namaToko');
+            'alamat' => $this->input->post('alamat');
+        );
+        $this->Admin->create_ref_toko($data);
+    }
 }
 ?>

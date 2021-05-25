@@ -6,5 +6,13 @@ class Admin extends CI_Model{							//Kelas Admin untuk mengetahui apakah user m
         return $this->db->update('member', $data);			//Mengembalikan member dengan parameter data
 
     }
+
+    function create_ref_toko($data) {
+        return $this->db->insert('ref_toko', $data);
+    }
+
+    function add_relation_ref_bahan($data) {
+        return $this->db->insert('toko_bahan', $data);
+    }
 }
 ?>
