@@ -1,6 +1,6 @@
 <body>
     <!-- slider_area_start -->
-	//Slider digunakan untuk menampilkan iklan atau promo yang tersedia
+	  <!-- Slider digunakan untuk menampilkan iklan atau promo yang tersedia -->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -30,7 +30,7 @@
     <!-- slider_area_end -->
     
     <!-- recepie_area_start  -->
-	//Menampilkan resep-resep yang tersedia, dapat dilakukan sort berdasarkan triteria tertentu, selain itu dapat juga dilakukan pencarian resep berdasarkan nama hidangan
+    <!-- Menampilkan resep-resep yang tersedia, dapat dilakukan sort berdasarkan triteria tertentu, selain itu dapat juga dilakukan pencarian resep berdasarkan nama hidangan --> 
     <div class="recepie_area">
       <div class="container">
         <div class="row" style="margin-bottom: 20px">
@@ -96,4 +96,4 @@
         </div>
       </div>
     </div>
-    <!-- /recepie_area_end  -->
+    <!-- recepie_area_end  -->

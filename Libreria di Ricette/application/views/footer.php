@@ -119,7 +119,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!--/ footer  -->
 
     <!-- JS here -->
-	//Menampilkan Javasript yang digunakan dalam website Libreria di Ricette
+    <!-- Menampilkan Javasript yang digunakan dalam website Libreria di Ricette -->
     <script src="<?= base_url('assets/js/vendor/modernizr-3.5.0.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/vendor/jquery-1.12.4.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/popper.min.js') ?>"></script>

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900|Satisfy&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900|Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:300,300i,400,400i,500,700,900 |Satisfy&display=swap");
 /* line 1, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_extend.scss */
 .boxed-btn3-text:hover {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff008c+0,ff6357+100 */
@@ -75,7 +76,7 @@ button {
 
 /* line 39, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/theme-default.scss */
 h1, h2, h3, h4, h5 {
-  font-family: "Satisfy", cursive;
+  font-family: 'Montserrat Alternates', cursive;
   color: #000000;
 }
 

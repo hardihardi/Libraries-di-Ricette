@@ -7,7 +7,6 @@
 					</div>
 					<br>
 					<table class="table">
-						//menampilkan header yang berisikan ID Member, Username, dan Action untuk menampilkan modal dari user yang dipilih
 						<thead>
 							<tr>
 							<th scope="col">ID Member</th>
@@ -20,7 +19,7 @@
 							<tr>
 								<td><?= $di['idMember'] ?></td>
 								<td><?= $di['username'] ?></td>
-								<td> //tombol view member yang digunakan untuk memunculkan modal dari user yang dipilih
+								<td>
 									<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalViewMember<?= $di["idMember"]?>">
 									view Member
 									</button>
@@ -35,8 +34,6 @@
 		</div>
 </div>
 
-
-// Menampilkan modal dari akun yang dipilih
 <!-- Modal view Account -->
 <?php foreach ($member_list as $m) {?>
     <div class="modal fade" id="modalViewMember<?= $m['idMember']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

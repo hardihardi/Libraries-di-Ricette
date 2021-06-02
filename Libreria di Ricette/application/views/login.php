@@ -7,7 +7,7 @@
   <body>
     <div class="container">
         <div class="inputs">
-					//form yang digunakan untuk melakukan login. Berisikan field username dan Password
+			<!--form yang digunakan untuk melakukan login. Berisikan field username dan Password -->
             <form action="<?=site_url('AccountController/login')?>" method="POST">
                 <h2 style="text-align: center;">Login</h2>
                 <label><b>Username</b></label>

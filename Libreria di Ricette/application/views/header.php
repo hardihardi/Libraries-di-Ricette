@@ -28,7 +28,7 @@
 
 <body>
     <!-- header-start -->
-	//Header berisi Home, Recipes, dan About
+    <!-- Header berisi Home, Recipes, dan About -->
     <header>
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area ">
