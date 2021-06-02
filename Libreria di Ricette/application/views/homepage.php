@@ -25,12 +25,13 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-  </div>
+</div>
 <!-- slider_area_end -->
 
 <!-- recepie_area_start  -->
-<!-- Menampilkan resep-resep yang tersedia, dapat dilakukan sort berdasarkan triteria tertentu, selain itu dapat juga dilakukan pencarian resep berdasarkan nama hidangan --> 
-<div class="recepie_area">
+<!-- Menampilkan resep-resep yang tersedia, dapat dilakukan sort berdasarkan triteria tertentu, selain itu dapat juga dilakukan pencarian resep berdasarkan nama hidangan -->
+<div style="margin-bottom: 200px">
+  <div class="recepie_area">
   <div class="container">
     <div class="row" style="margin-bottom: 20px">
       <div class="col-lg-6">
@@ -95,4 +96,6 @@
     </div>
   </div>
 </div>
+</div> 
+
 <!-- recepie_area_end  -->
