@@ -27,7 +27,9 @@ class AccountController extends CI_Controller {
 		$masuk = $this->Account->login($data);
 		if ($masuk) {
 			$this->session->set_userdata('username', $data['username']);
+			$this->load->view('header');
 			$this->load->view('homepage');
+			$this->load->view('footer');
 		} else {
 			$this->load->view('login');
 		}

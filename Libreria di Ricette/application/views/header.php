@@ -1,4 +1,3 @@
-<!doctype html>
 <html class="no-js" lang="eng">
 
 <head>
@@ -37,7 +36,7 @@
                         <div class="col-xl-3 col-lg-2">
                             <div class="logo">
                                 <a href="index.html">
-                                    <img src="img/logo.png" alt="">
+                                    <img src="<?= base_url("assets/img/logo.png") ?>" alt="">
                                 </a>
                             </div>
                         </div>
