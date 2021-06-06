@@ -51,51 +51,37 @@
       
     </div>
     <div class="row">
+      <!-- content -->
+      <?php foreach (array_reverse($recipe) as $r) { ?>
       <div class="col-xl-4 col-lg-4 col-md-6">
         <img class="card-img-top" src="<?= base_url('assets/css/home.css') ?>" alt="Card image cap">
         <div class="card-body">
-          <h3 class="card-title">Card title</h3>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span>
-          <p>3.0/5</p>
+          <h3 class="card-title"><?= $r['judul'] ?></h3>
+          <?php
+            $empty_star = 5 - $r['rating'];
+            for ($i = 0; $i < $r['rating']; $i++) {
+          ?>
+              <span class="fa fa-star checked"></span>
+          <?php
+            }
+
+            for ($i = 0; $i < $empty_star; $i++) {
+          ?>
+              <span class="fa fa-star"></span>
+          <?php } ?>
+          <p><?= $r['rating'] ?>/5</p>
           <p>By Mamank Garox</p>
           <a href="#" class="genric-btn primary circle">View Full Recipe</a>
         </div>
       </div>
-      <div class="col-xl-4 col-lg-4 col-md-6">
-        <img class="card-img-top" src="<?= base_url('assets/css/home.css') ?>" alt="Card image cap">
-        <div class="card-body">
-          <h3 class="card-title">Card title</h3>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span>
-          <p>3.0/5</p>
-          <p>By Mamank Garox</p>
-          <a href="#" class="genric-btn primary circle">View Full Recipe</a>
-        </div>
-      </div>
-      <div class="col-xl-4 col-lg-4 col-md-6">
-        <img class="card-img-top" src="<?= base_url('assets/css/home.css') ?>" alt="Card image cap">
-        <div class="card-body">
-          <h3 class="card-title">Card title</h3>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span>
-          <p>3.0/5</p>
-          <p>By Mamank Garox</p>
-          <a href="#" class="genric-btn primary circle">View Full Recipe</a>
-        </div>
-      </div>
+      <?php } ?>
     </div>
   </div>
 </div>
 </div> 
 
 <!-- recepie_area_end  -->
+
+<div class="col">
+  <?= $pagination; ?>
+</div>

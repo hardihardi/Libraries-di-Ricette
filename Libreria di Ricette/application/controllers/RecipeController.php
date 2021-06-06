@@ -17,7 +17,7 @@ class RecipeController extends CI_Controller {
         // pagination configuration
 		$config['base_url'] = site_url('RecipeController/index');
 		$config['total_rows'] = $this->db->count_all('resep');
-		$config['per_page'] = 8;
+		$config['per_page'] = 9;
 		$config["uri_segment"] = 3;  // uri parameter
         $choice = $config["total_rows"] / $config["per_page"];
         $config["num_links"] = floor($choice);
@@ -45,12 +45,12 @@ class RecipeController extends CI_Controller {
 		// initialize pagination and content
 		$this->pagination->initialize($config);
         $content['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $content['recipe'] = $this->Resep->get_all($config["per_page"], $content['page']);
+        $content['recipe'] = $this->Resep->get_resep_list($config["per_page"], $content['page']);
         $content['pagination'] = $this->pagination->create_links();
 
 		// load the page
 		$this->load->view('header');
-		$this->load->view('homeResep',$content);
+		$this->load->view('homepage',$content);
 		$this->load->view('footer');
     }
 
@@ -58,19 +58,19 @@ class RecipeController extends CI_Controller {
 	public function view_recipe($id_recipe) {
 		$content = $this->Resep->get_resep_id($id_recipe);
 		$this->load->view('header');
-		$this->load->view('viewResep', $content);
+		$this->load->view('homepage', $content);
 		$this->load->view('footer');
 	}
 
 	// function to create a recipe
 	public function create_recipe() {
 		$data = array(
-			'judul' => $this->input->post('judul');
-			'penulis' => $this->session->username;
-			'deskripisi' => $this->input->post('deskripsi');
-			'bahan' => $this->input->post('bahan');
-			'langkah' => $this->input->post('langkah');
-			'rating' => 0;
+			'judul' => $this->input->post('judul'),
+			'penulis' => $this->session->username,
+			'deskripisi' => $this->input->post('deskripsi'),
+			'bahan' => $this->input->post('bahan'),
+			'langkah' => $this->input->post('langkah'),
+			'rating' => 0,
 		);
 
 		$cek = $this->Resep->buat_resep($data);
@@ -82,11 +82,11 @@ class RecipeController extends CI_Controller {
 	// function to edit a recpie
 	public function edit_recipe($id_recipe) {
 		$data = array(
-			'judul' => $this->input->post('judul');
-			'penulis' => $this->session->username;
-			'deskripisi' => $this->input->post('deskripsi');
-			'bahan' => $this->input->post('bahan');
-			'langkah' => $this->input->post('langkah');
+			'judul' => $this->input->post('judul'),
+			'penulis' => $this->session->username,
+			'deskripisi' => $this->input->post('deskripsi'),
+			'bahan' => $this->input->post('bahan'),
+			'langkah' => $this->input->post('langkah'),
 		);
 
 		$cek = $this->Resep->update_resep($id_recipe, $data);

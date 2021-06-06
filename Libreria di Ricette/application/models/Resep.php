@@ -29,6 +29,10 @@
             return $this->db->delete('resep');
         }
 
+        function get_resep_list($limit, $start) {
+            return $this->db->get('resep', $limit, $start)->result_array();
+        }
+
         //function tambah_langkah is use to add new steps in uploaded recipes
         function tambah_langkah($data) {
             return $this->db->insert('step_resep', $data);
