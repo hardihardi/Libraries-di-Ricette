@@ -44,12 +44,34 @@
                             <div class="main-menu   d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="index.html" style="color: white;">home</a></li>
-                                        <li><a href="Recipes.html" style="color: white;">Recipes</a></li>
-										<li><a href="about.html" style="color: white;">about</a></li>
+                                        <li><a href="<?= base_url()?>" style="color: white;">home</a></li>
+										<li><a href="<?= base_url()?>" style="color: white;">About</a></li>
                                     </ul>
                                 </nav>
                             </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-2">
+                            <form class="form-inline" style="float: right;">
+                                <ul class="navbar-nav ml-auto">
+                                    <div class="topbar-divider d-none d-sm-block"></div>
+                                        <li class="nav-item dropdown no-arrow" style="background-color: rgb(255, 94, 19);;border-radius: 20px; padding-right: 10px; padding-left: 10px;">
+                                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <img src="<?= base_url('assets\img\user.png') ?>" width="35">
+                                                <p class="user-name mr-2 d-none d-lg-inline text-dark" style="text-transform: uppercase;font-weight: 500">username</p>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                                <a class="dropdown-item" href="<?= base_url('') ?>">
+                                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                    Create Resep
+                                                </a>
+                                                <a class="dropdown-item" href="<?= base_url('') ?>">
+                                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                    Logout
+                                                </a>
+                                            </div>
+                                        </li>
+                                </ul>
+                            </form>
                         </div>
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
