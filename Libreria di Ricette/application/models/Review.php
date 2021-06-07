@@ -1,6 +1,6 @@
 <?php
 
-class Review_model extends CI_Model
+class Review extends CI_Model
 {
     //adding new review from users
     public function tambahReviewBaru($data)

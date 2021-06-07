@@ -71,7 +71,7 @@
           <?php } ?>
           <p><?= $r['rating'] ?>/5</p>
           <p>By Mamank Garox</p>
-          <a href="#" class="genric-btn primary circle">View Full Recipe</a>
+          <a href="<?= base_url('index.php/RecipeController/view_recipe/').$r['idResep'] ?>" class="genric-btn primary circle">View Full Recipe</a>
         </div>
       </div>
       <?php } ?>

@@ -13,19 +13,19 @@
 
         //function get_resep_id will take data from the id_resep table by id if the id is in the table
         function get_resep_id($id_resep) {
-            $this->db->where('id_resep', $id_resep);
+            $this->db->where('idResep', $id_resep);
             return $this->db->get('resep')->row_array();
         }
 
         //function update_resep can use by the authors to updating their uploaded recipes
         function update_resep($id_resep, $data) {
-            $this->db->where('id_resep', $id_resep);
+            $this->db->where('idResep', $id_resep);
             return $this->db->update('resep', $data);
         }
 
         //function delete_resep can use by the authors to deleting their uploaded recipes
         function delete_resep($id_resep) {
-            $this->db->where('id_resep', $id_resep);
+            $this->db->where('idResep', $id_resep);
             return $this->db->delete('resep');
         }
 
@@ -40,7 +40,7 @@
 
         //function get_langkah will take data from the id_resep table by id if the id is in the table
         function get_langkah($id_resep) {
-            $this->db->where('id_resep', $id_resep);
+            $this->db->where('idResep', $id_resep);
             return $this->db->get('step_resep')->result_array();
         }
 

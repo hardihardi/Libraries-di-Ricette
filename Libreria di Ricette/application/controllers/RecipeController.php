@@ -8,6 +8,8 @@ class RecipeController extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Resep');
+		$this->load->model('Member');
+		$this->load->model('Review');
 		$this->load->library('pagination');
 	}
 
@@ -56,9 +58,10 @@ class RecipeController extends CI_Controller {
 
 	// function to read a recipe based on its id
 	public function view_recipe($id_recipe) {
-		$content = $this->Resep->get_resep_id($id_recipe);
+		$content['recipe'] = $this->Resep->get_resep_id($id_recipe);
+		$content['review'] = $this->Review->getAllReview($id_recipe);
 		$this->load->view('header');
-		$this->load->view('homepage', $content);
+		$this->load->view('fullRecipe', $content);
 		$this->load->view('footer');
 	}
 
