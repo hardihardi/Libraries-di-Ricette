@@ -35,7 +35,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-2">
                             <div class="logo">
-                                <a href="index.html">
+                                <a href="<?= base_url('/index.php/RecipeController')?>">
                                     <img src="<?= base_url('assets/img/LogoLI.png') ?>" style="height: 100px; width:100px;">
                                 </a>
                             </div>
