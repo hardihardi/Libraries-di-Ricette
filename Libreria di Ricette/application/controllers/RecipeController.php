@@ -60,6 +60,10 @@ class RecipeController extends CI_Controller {
 	public function view_recipe($id_recipe) {
 		$content['recipe'] = $this->Resep->get_resep_id($id_recipe);
 		$content['review'] = $this->Review->getAllReview($id_recipe);
+		$content['langkah'] = $this->Resep->get_langkah($id_recipe);
+
+		$member = $this->Resep->get_resep_id($id_recipe);
+		$content['member'] = $this->Member->get_member_id($member['idMember']);
 		$this->load->view('header');
 		$this->load->view('fullRecipe', $content);
 		$this->load->view('footer');

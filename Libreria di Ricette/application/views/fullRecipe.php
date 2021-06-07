@@ -25,7 +25,7 @@
                         <h2><?= $recipe['judul'];?></h2>
                         <div class="resepies_details">
                             <ul>
-								<li><p><strong>Oleh</strong> <?= $recipe['idMember'];?></p></li>
+								<li><p><strong>Oleh</strong> <?= $member['username'];?></p></li>
                                 <li><p><strong>Rating</strong> 
                                     <?php
                                         $empty_star = 5 - $recipe['rating'];
@@ -75,10 +75,9 @@
                     <div class="recepies_step">
 						<h3>Langkah-langkah Pembuatan</h3>
 						<ol class="a">
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut turpis laoreet, ultricies arcu id, tempor dolor.</li> 
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut turpis laoreet, ultricies arcu id, tempor dolor.</li> 
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut turpis laoreet, ultricies arcu id, tempor dolor.</li> 
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut turpis laoreet, ultricies arcu id, tempor dolor.</li> 
+                            <?php foreach (($langkah) as $l) { ?>
+                            <li><?= $l['stepKe'] ?>. <?= $l['deskripsi'] ?></li>
+                            <?php } ?> 
 						</ol> 
 						</p>
 					</div>
