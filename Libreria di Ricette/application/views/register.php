@@ -7,7 +7,7 @@
   <body>
     <div class="container">
         <div class="inputs">
-            <form action="<?=site_url('AccountController/register')?>" method="POST">
+            <form action="<?=site_url('daftar/register')?>" method="POST">
                 <h2 style="text-align: center;">Daftar</h2>
                 <label><b>Username</b></label>
                     <input type="text" name="username" placeholder="Username" class="input-field"/>

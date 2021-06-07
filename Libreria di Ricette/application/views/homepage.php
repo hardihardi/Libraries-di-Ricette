@@ -6,7 +6,7 @@
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
-    <div class="carousel-inner">
+    <div class="carousel-inner"style="height: 400px">
       <div class="carousel-item active">
         <img src="<?= base_url("assets/img/1.jpg") ?>" class="d-block w-100">
       </div>
@@ -40,7 +40,7 @@
       <div class="col-lg-6">
         <div class="row">
           <div class="input-group-icon mt-10 col-lg-9" style="outline-style: solid; outline-color: #ff5e13;">
-            <div class="icon"><i class="fa fa-search" aria-hidden="true"></i></div>
+            <div class="icon" style="margin-top: 10px"><i class="fa fa-search" aria-hidden="true"></i></div>
             <input type="text" name="Search" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'" required="" class="single-input">
           </div>
           <div class="col-lg-9" style="width: 15%;">
@@ -54,7 +54,7 @@
       <!-- content -->
       <?php foreach (array_reverse($recipe) as $r) { ?>
       <div class="col-xl-4 col-lg-4 col-md-6">
-        <img class="card-img-top" src="<?= base_url('assets/css/home.css') ?>" alt="Card image cap">
+        <img class="card-img-top" style="height: 250px;" src="<?= base_url('assets/img/').$r['resepPic'] ?>" alt="Card image cap">
         <div class="card-body">
           <h3 class="card-title"><?= $r['judul'] ?></h3>
           <?php
@@ -78,10 +78,9 @@
     </div>
   </div>
 </div>
-</div> 
-
-<!-- recepie_area_end  -->
-
 <div class="col">
   <?= $pagination; ?>
 </div>
+</div> 
+
+<!-- recepie_area_end  -->

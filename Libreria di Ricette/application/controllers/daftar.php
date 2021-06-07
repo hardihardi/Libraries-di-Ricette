@@ -26,7 +26,7 @@ class daftar extends CI_Controller {
 
         $daftar = $this->Account->register("user", $dataUser);
         if ($daftar) {
-            $this->load->view('homepage');
+            redirect('AccountController');
         } else {
             $this->load->view('register');
         }
