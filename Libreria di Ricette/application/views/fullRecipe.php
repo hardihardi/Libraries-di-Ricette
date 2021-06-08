@@ -63,10 +63,9 @@
                 <div class="col-xl-12">
                     <div class="recepies_text">
 						<h3>Bahan-bahan</h3>
-						<p style="text-indent: 0.5in;">Example	3 Sdm</p>
-						<p style="text-indent: 0.5in;">Example	4 Sdt</p>
-						<p style="text-indent: 0.5in;">Example	1 Siung</p>
-						<p style="text-indent: 0.5in;">Example	3 Sdm</p>
+                        <?php foreach (($bahan) as $index => $b) { ?>
+                            <p style="text-indent: 0.5in;"><?= $bahan[$index]['namaBahan'].' sebanyak '.$takaran[$index]['takaran']?></p>
+                        <?php } ?> 
 					</div>
                 </div>
             </div>
@@ -87,11 +86,11 @@
                 <div class="col-xl-12">
                     <div class="recepies_reviewed">
 						<h3>Review</h3>
-                        <?php foreach (array_reverse($review) as $r) { ?>
+                        <?php foreach (array_reverse($review) as $index =>$r) { ?>
 						<div class="recepies_review">
-						    <img class="img2" src="https://www.jobstreet.co.id/en/cms/employer/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" alt="Pineapple" width="50" height="50">
-						    <h5><?= $r['idMember'] ?></h5>
-                            <p><?= $r['isi'] ?></p>
+						    <img class="img2" src="<?= base_url('assets\img\user.png') ?>" alt="Pineapple" width="50" height="50">
+                            <h5><?= $memberReview[$index]['username'] ?></h5>
+                            <p><?= $review[$index]['isi'] ?></p>
 						</div>
                         <?php } ?>
 					</div>

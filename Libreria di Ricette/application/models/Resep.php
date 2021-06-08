@@ -16,7 +16,10 @@
             $this->db->where('idResep', $id_resep);
             return $this->db->get('resep')->row_array();
         }
-
+        function get_resep_bahan($id_resep) {
+            $this->db->where('idResep', $id_resep);
+            return $this->db->get('bahan_resep')->result_array();
+        }
         //function update_resep can use by the authors to updating their uploaded recipes
         function update_resep($id_resep, $data) {
             $this->db->where('idResep', $id_resep);
