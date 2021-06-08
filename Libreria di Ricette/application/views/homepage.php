@@ -52,14 +52,14 @@
     </div>
     <div class="row">
       <!-- content -->
-      <?php foreach (array_reverse($recipe) as $r) { ?>
+      <?php foreach (array_reverse($recipe) as $index =>$r) { ?>
       <div class="col-xl-4 col-lg-4 col-md-6">
-        <img class="card-img-top" style="height: 250px;" src="<?= base_url('assets/img/').$r['resepPic'] ?>" alt="Card image cap">
+        <img class="card-img-top" style="height: 250px;" src="<?= base_url('assets/img/').$recipe[$index]['resepPic'] ?>" alt="Card image cap">
         <div class="card-body">
-          <h3 class="card-title"><?= $r['judul'] ?></h3>
+          <h3 class="card-title"><?= $recipe[$index]['judul'] ?></h3>
           <?php
-            $empty_star = 5 - $r['rating'];
-            for ($i = 0; $i < $r['rating']; $i++) {
+            $empty_star = 5 - $recipe[$index]['rating'];
+            for ($i = 0; $i < $recipe[$index]['rating']; $i++) {
           ?>
               <span class="fa fa-star checked"></span>
           <?php
@@ -69,9 +69,9 @@
           ?>
               <span class="fa fa-star"></span>
           <?php } ?>
-          <p><?= $r['rating'] ?>/5</p>
-          <p>By Mamank Garox</p>
-          <a href="<?= base_url('index.php/RecipeController/view_recipe/').$r['idResep'] ?>" class="genric-btn primary circle">View Full Recipe</a>
+          <p><?= $recipe[$index]['rating'] ?>/5</p>
+          <p>By <?= $member[$index]['username'] ?></p>
+          <a href="<?= base_url('index.php/RecipeController/view_recipe/').$recipe[$index]['idResep'] ?>" class="genric-btn primary circle">View Full Recipe</a>
         </div>
       </div>
       <?php } ?>

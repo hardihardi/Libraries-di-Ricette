@@ -49,6 +49,13 @@ class RecipeController extends CI_Controller {
 		$this->pagination->initialize($config);
         $content['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $content['recipe'] = $this->Resep->get_resep_list($config["per_page"], $content['page']);
+        
+        $resepPage = $this->Resep->get_resep_list($config["per_page"], $content['page']);
+        $arrMember =array();
+		foreach ($resepPage as $y) {
+			$arrMember[] = $this->Member->get_member_id($y['idMember']);
+		}
+		$content['member'] = $arrMember;
         $content['pagination'] = $this->pagination->create_links();
 
 		// load the page
