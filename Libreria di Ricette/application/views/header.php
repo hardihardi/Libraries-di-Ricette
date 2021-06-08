@@ -65,7 +65,7 @@
                                                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                                             View User
                                                         </a>
-        						                        <a class="dropdown-item" href="<?= base_url('') ?>">
+        						                        <a class="dropdown-item" href="<?= base_url('/index.php/RecipeController/form_recipe') ?>">
                                                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                                             Create Resep
                                                         </a>

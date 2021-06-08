@@ -69,6 +69,13 @@ class RecipeController extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	// function to load create recipe form
+	public function form_recipe() {
+		$this->load->view('header');
+		$this->load->view('formCreateResep');
+		$this->load->view('footer');
+	}
+
 	// function to create a recipe
 	public function create_recipe() {
 		$data = array(

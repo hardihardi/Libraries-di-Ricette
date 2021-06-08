@@ -34,7 +34,6 @@
     <script src="<?= base_url('assets/js/jquery.form.js') ?>"></script>
     <script src="<?= base_url('assets/js/jquery.validate.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/mail-script.js') ?>"></script>
-
     <script src="<?= base_url('js/main.js') ?>"></script>
 </body>
 
