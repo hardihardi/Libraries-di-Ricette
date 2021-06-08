@@ -8,6 +8,7 @@ class daftar extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Account');
+        $this->load->model('Member');
 	}
 
     // function index that will take you to the register page
@@ -23,8 +24,12 @@ class daftar extends CI_Controller {
             "password" => md5($this->input->post('password', true)),
             "isAdmin" => 0
         );
+        $dataMember = array(
+            "username" => $this->input->post('username', true),
+        );
 
         $daftar = $this->Account->register("user", $dataUser);
+        $daftar1 = $this->Member->buat_member($dataMember);
         if ($daftar) {
             redirect('AccountController');
         } else {

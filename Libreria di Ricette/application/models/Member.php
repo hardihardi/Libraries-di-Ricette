@@ -3,7 +3,7 @@
 	class Member extends CI_Model{
 
 		// function untuk mendaftarkan member baru ke dalam database
-		function buat_memeber($data){
+		function buat_member($data){
 			return $this->db->insert('member', $data);
 		}
 
@@ -17,7 +17,10 @@
 			$this->db->where('idMember', $id_member);
 			return $this->db->get('member')->row_array();
 		}
-
+		function get_member_username($username){
+			$this->db->where('username', $username);
+			return $this->db->get('member')->row_array();
+		}
 		// function untuk melakukan update/modifikasu data member berdasarkan id member
 		function update_member_id($id_member, $data){
 			$this->db->where('idMember', $id_member);

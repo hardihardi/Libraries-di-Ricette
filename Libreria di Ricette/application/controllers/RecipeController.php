@@ -12,6 +12,7 @@ class RecipeController extends CI_Controller {
 		$this->load->model('Review');
 		$this->load->model('Bahan');
 		$this->load->library('pagination');
+		$this->load->helper('date');
 	}
 
 	// function index that loads all available recipe in database
@@ -139,6 +140,19 @@ class RecipeController extends CI_Controller {
 		if ($cek) {
 			redirect('RecipeController', 'refresh');
 		}
+	}
+	public function add_review($id_recipe){
+		$username = $this->session->userdata('username');
+		$member = $this->Member->get_member_username($username);
+		$data = array(
+			'rating' => $this->input->post('rating'),
+			'isi' => $this->input->post('isi'),
+			'idMember' => $member['idMember'],
+			'idResep' => $id_recipe,
+			'tglReview' => time(),
+		);
+		$cek = $this->Review->tambahReviewBaru($data);
+		redirect('RecipeController/view_recipe/'.$id_recipe, 'refresh');
 	}
 }
 ?>

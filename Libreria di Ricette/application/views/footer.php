@@ -35,6 +35,7 @@
     <script src="<?= base_url('assets/js/jquery.validate.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/mail-script.js') ?>"></script>
     <script src="<?= base_url('js/main.js') ?>"></script>
+     <script src="https://use.fontawesome.com/a6f0361695.js"></script>
 </body>
 
 </html>
