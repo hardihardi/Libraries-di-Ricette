@@ -10,6 +10,7 @@ class RecipeController extends CI_Controller {
 		$this->load->model('Resep');
 		$this->load->model('Member');
 		$this->load->model('Review');
+		$this->load->model('Bahan');
 		$this->load->library('pagination');
 	}
 
@@ -59,11 +60,27 @@ class RecipeController extends CI_Controller {
 	// function to read a recipe based on its id
 	public function view_recipe($id_recipe) {
 		$content['recipe'] = $this->Resep->get_resep_id($id_recipe);
-		$content['review'] = $this->Review->getAllReview($id_recipe);
 		$content['langkah'] = $this->Resep->get_langkah($id_recipe);
+		
+		$bahanid = $this->Resep->get_resep_bahan($id_recipe);
+		$content['takaran'] = $bahanid;
+		$arrBahan = array();
+		foreach ($bahanid as $x) {
+			$arrBahan[] = $this->Bahan->get_bahan($x['idBahan']);	
+		}
+		$content['bahan'] = $arrBahan;
+
+		$reviewMember = $this->Review->getAllReview($id_recipe);
+		$content['review'] = $reviewMember;
+		$arrMember =array();
+		foreach ($reviewMember as $y) {
+			$arrMember[] = $this->Member->get_member_id($y['idMember']);
+		}
+		$content['memberReview'] = $arrMember;
 
 		$member = $this->Resep->get_resep_id($id_recipe);
 		$content['member'] = $this->Member->get_member_id($member['idMember']);
+
 		$this->load->view('header');
 		$this->load->view('fullRecipe', $content);
 		$this->load->view('footer');
