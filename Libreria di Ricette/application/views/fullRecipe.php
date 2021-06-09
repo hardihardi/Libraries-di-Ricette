@@ -63,9 +63,19 @@
             <div class="col-xl-12">
                 <div class="recepies_step">
 					<h3>Bahan-bahan</h3>
-                    <?php foreach (($bahan) as $index => $b) { ?>
-                        <p style="text-indent: 0.5in;"><?= $bahan[$index]['namaBahan'].' sebanyak '.$takaran[$index]['takaran']?></p>
-                    <?php } ?> 
+                    <table style="width: 100%">
+                        <?php foreach (($bahan) as $index => $b) { ?>
+                        <tr>
+                            <td><?= $bahan[$index]['namaBahan']?></td>
+                            <td><?= $takaran[$index]['takaran']?></td>
+                            <td>
+                                <button type="button" style="background-color:rgb(255, 94, 19);" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalViewBahan<?= $bahan[$index]['idBahan']?>">
+                                    view Toko
+                                </button>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </table>
 				</div>
             </div>
         </div>
@@ -89,7 +99,22 @@
                     <?php foreach (array_reverse($review) as $index =>$r) { ?>
 					<div class="recepies_review">
 					    <img class="img2" src="<?= base_url('assets\img\user.png') ?>" alt="Pineapple" width="50" height="50">
-                        <h5><?= $memberReview[$index]['username'] ?></h5>
+                        <table style="width: 100%">
+                            <tr>
+                                <td><h5><?= $memberReview[$index]['username'] ?></h5></td>
+                                <td><?php
+                            $empty_star = 5 - $review[$index]['rating'];
+                            for ($i = 0; $i < $review[$index]['rating']; $i++) {
+                        ?>
+                                <span class="fa fa-star checked" style="margin-bottom: 15px;"></span>
+                            <?php
+                            }
+                            for ($i = 0; $i < $empty_star; $i++) {
+                            ?>
+                                <span class="fa fa-star" style="margin-bottom: 15px;"></span>
+                        <?php } ?></td>
+                            </tr>
+                        </table>
                         <p><?= $review[$index]['isi'] ?></p>
 					</div>
                     <?php } ?>
@@ -125,9 +150,29 @@
 				  </div>
 				  </div>
 				</div>
-				 <button type="submit" class="btn btn-primary">Submit</button>
+				 <button type="submit" style="background-color:rgb(255, 94, 19);" class="btn btn-primary">Submit</button>
 				</form>
 	    </div>
 	    <?php endif; ?>
     </div>
 </div>
+<?php foreach ($bahan as $index => $b) {?>
+    <div class="modal fade" id="modalViewBahan<?= $b['idBahan']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" action="">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h4 class="display-4">Daftar Toko</h4>
+                </div>
+                <div class="modal-body">
+                    <?php foreach ($toko[$index] as $i => $t) {?>
+                    <h5><?= $t[0]['namaToko']?></h5>
+                    <p><?= $t[0]['alamat']?></p>
+                    <?php }?>
+                </div>
+                 <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php }?>

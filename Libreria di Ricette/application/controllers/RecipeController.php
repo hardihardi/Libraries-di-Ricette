@@ -88,7 +88,11 @@ class RecipeController extends CI_Controller {
 
 		$member = $this->Resep->get_resep_id($id_recipe);
 		$content['member'] = $this->Member->get_member_id($member['idMember']);
-
+		$toko = array();
+		foreach ($arrBahan as $index => $b) {
+			$toko[] = $this->Bahan->get_toko_bahan($b['idBahan']);
+		}
+		$content['toko'] = $toko;
 		$this->load->view('header');
 		$this->load->view('fullRecipe', $content);
 		$this->load->view('footer');
@@ -151,7 +155,14 @@ class RecipeController extends CI_Controller {
 			'idResep' => $id_recipe,
 			'tglReview' => time(),
 		);
+		$resep = $this->Resep->get_resep_id($id_recipe);
+		if ($resep['rating'] == 0) {
+			$rating = array('rating' => $this->input->post('rating'));
+		} else {
+			$rating = array('rating' => round(($this->input->post('rating')+$resep['rating'])/2));
+		}
 		$cek = $this->Review->tambahReviewBaru($data);
+		$this->Resep->update_resep($id_recipe,$rating);
 		redirect('RecipeController/view_recipe/'.$id_recipe, 'refresh');
 	}
 }
