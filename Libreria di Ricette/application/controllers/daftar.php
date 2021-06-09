@@ -25,7 +25,12 @@ class daftar extends CI_Controller {
             "isAdmin" => 0
         );
         $dataMember = array(
+            "profilePic" => "user.png",
             "username" => $this->input->post('username', true),
+            "nama" => $this->input->post('nama', true),
+            "email" => $this->input->post('email', true),
+            "jenisKelamin" => $this->input->post('jenisKelamin', true),
+            "Verified" => 0,
         );
 
         $daftar = $this->Account->register("user", $dataUser);
