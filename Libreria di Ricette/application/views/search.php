@@ -54,8 +54,11 @@
     </div>
     <div class="row">
       <!-- content -->
+      <?php if (empty($recipe)) { ?>
+        <img class="card-img-top" style="height: 350px; width: 850px; display: block; margin-left: auto; margin-right: auto;" src="<?= base_url('assets/img/notFound.png')?>" alt="Card image cap">
+      <?php } else {?>
       <?php foreach (array_reverse($recipe) as $index =>$r) { ?>
-      <div class="col-xl-4 col-lg-4 col-md-6">
+        <div class="col-xl-4 col-lg-4 col-md-6">
         <img class="card-img-top" style="height: 250px;" src="<?= base_url('assets/img/').$recipe[$index]['resepPic'] ?>" alt="Card image cap">
         <div class="card-body">
           <h3 class="card-title"><?= $recipe[$index]['judul'] ?></h3>
@@ -76,12 +79,11 @@
           <a href="<?= base_url('index.php/RecipeController/view_recipe/').$recipe[$index]['idResep'] ?>" class="genric-btn primary circle">View Full Recipe</a>
         </div>
       </div>
-      <?php } ?>
+      <?php }} ?>
     </div>
   </div>
 </div>
 <div class="col">
-  <?= $pagination; ?>
 </div>
 </div> 
 

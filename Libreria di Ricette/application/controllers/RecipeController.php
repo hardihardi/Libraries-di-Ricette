@@ -165,5 +165,18 @@ class RecipeController extends CI_Controller {
 		$this->Resep->update_resep($id_recipe,$rating);
 		redirect('RecipeController/view_recipe/'.$id_recipe, 'refresh');
 	}
+	public function search(){
+		$keyword = $this->input->post('keyword');
+		$data['recipe']= $this->Resep->get_Resep_keyword($keyword);
+		$resepPage =  $this->Resep->get_Resep_keyword($keyword);
+    	$arrMember =array();
+		foreach ($resepPage as $y) {
+			$arrMember[] = $this->Member->get_member_id($y['idMember']);
+		}
+		$data['member'] = $arrMember;
+		$this->load->view('header');
+		$this->load->view('search',$data);
+		$this->load->view('footer');
+		}
 }
 ?>

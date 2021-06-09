@@ -64,5 +64,12 @@
             $this->db->where('id_step', $id_step);
             return $this->db->delete('step_resep');
         }
+        public function get_resep_keyword($keyword){
+            $this->db->select('*');
+            $this->db->from('resep');
+            $this->db->like('judul',$keyword);
+            $this->db->or_like('deskripsi',$keyword);
+            return $this->db->get()->result_array();
+        }
     }
 ?>
