@@ -35,7 +35,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-2">
                             <div class="logo">
-                                <a href="index.html">
+                                <a href="<?= base_url('/index.php/AdminController')?>">
                                     <img src="<?= base_url('assets/img/LogoLI.png') ?>" style="height: 100px; width:100px;">
                                 </a>
                             </div>
@@ -44,12 +44,22 @@
                             <div class="main-menu   d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="<?= base_url('index.php/AdminController')?>" style="color: white;">View User</a></li>
-                                        <li><a href="<?= base_url('index.php/AdminController/view_bahan')?>" style="color: white;">view Bahan</a></li>
-                                        <li><a href="<?= base_url('index.php/AdminController/view_toko')?>" style="color: white;">View Toko</a></li>
+                                        <li><a href="<?= base_url('index.php/AdminController')?>" style="color: white;">Table User</a></li>
+                                        <li><a href="<?= base_url('index.php/AdminController/view_bahan')?>" style="color: white;">Table Bahan</a></li>
+                                        <li><a href="<?= base_url('index.php/AdminController/view_toko')?>" style="color: white;">Table Toko</a></li>
+                                        <li><a href="<?= base_url('index.php/AdminController/view_resep')?>" style="color: white;">Table Resep</a></li>
                                     </ul>
                                 </nav>
                             </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-2">
+                            <?php if ($this->session->has_userdata('username')) : ?>
+                                <a href="  <?= base_url('/index.php/AccountController/logout')?> ">
+                                    <button type="button" class="btn btn-danger">
+                                        Logout
+                                    </button>
+                                </a>
+                            <?php endif; ?>
                         </div>
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>

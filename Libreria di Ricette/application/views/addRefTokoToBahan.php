@@ -15,6 +15,13 @@
 							</tr>
 						</thead>
 						<tbody>
+							<tr>
+								<td>
+									<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambahBahan">
+									Tambah Bahan
+									</button>
+								</td>
+							</tr>
 							<?php foreach ($bahan_list as $di) {?>
 							<tr>
 								<td><?= $di['idBahan'] ?></td>
@@ -139,3 +146,25 @@
     </div>
 </div>
 <?php }?>
+<!-- Modal add Bahan -->
+<div class="modal fade" id="modalTambahBahan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h4 class="display-4">Tambah Bahan</h4>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="<?= site_url('AdminController/add_bahan') ?>">
+                    <div class="form-group">
+						<label for="formGroupExampleInput">Nama Bahan</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" value="" 
+                            name="namaBahan" required>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary rounded-0" id="virification" value="Submit" placeholder="Verify">
+          		</form>
+            </div>
+        </div>
+    </div>
+</div>

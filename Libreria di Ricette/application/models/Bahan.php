@@ -22,5 +22,8 @@
             $this->db->where('idBahan', $id_bahan);
             return $this->db->update('bahan', $data);
         }
+        function create_bahan($data) {
+        return $this->db->insert('bahan', $data);
+    }
 	}
  ?>

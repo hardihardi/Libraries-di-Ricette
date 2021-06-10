@@ -25,7 +25,9 @@
                     <h2><?= $recipe['judul'];?></h2>
                     <div class="resepies_details">
                         <ul>
-							<li><p><strong>Oleh</strong> <?= $member['username'];?></p></li>
+							<li><p style="font-size: 16px;"><strong>Oleh</strong> <?= $member['username'];?><?php if ($member['verified'] == 1) {?>
+                          <img src="<?= base_url('assets/img/check.png')?>" style="width: 20px; height: 20px;">
+                      <?php } ?></p></li>
                             <li><p><strong>Rating</strong> 
                                 <?php
                                     $empty_star = 5 - $recipe['rating'];

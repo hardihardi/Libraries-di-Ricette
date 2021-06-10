@@ -72,7 +72,17 @@
               <span class="fa fa-star"></span>
           <?php } ?>
           <p><?= $recipe[$index]['rating'] ?>/5</p>
-          <p>By <?= $member[$index]['username'] ?></p>
+          <table> 
+              <tr>  
+                  <td><p style="font-size: 16px;">By <?= $member[$index]['username'] ?></p></td>
+                  <td>  
+                      <?php if ($member[$index]['verified'] == 1) {?>
+                          <img src="<?= base_url('assets/img/check.png')?>" style="width: 20px; height: 20px;">
+                      <?php } ?>
+                  </td>
+              </tr>
+          </table>
+          <p></p>
           <a href="<?= base_url('index.php/RecipeController/view_recipe/').$recipe[$index]['idResep'] ?>" class="genric-btn primary circle">View Full Recipe</a>
         </div>
       </div>

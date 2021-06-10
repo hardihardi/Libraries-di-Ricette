@@ -10,6 +10,7 @@ class AdminController extends CI_Controller {
         $this->load->model('Member');
         $this->load->model('Bahan');
         $this->load->model('RefToko');
+        $this->load->model('Resep');
 	}
 
     // function index that will take admin to admin's dashboard
@@ -122,6 +123,25 @@ class AdminController extends CI_Controller {
         $cek = $this->Member->delete_member($id_member);
         if ($cek){
             redirect('AdminController', 'refresh');    
+        }
+    }
+    public function add_bahan() {
+        $data = array(
+            'namaBahan' => $this->input->post('namaBahan'),
+        );
+        $this->Bahan->create_bahan($data);
+        redirect('AdminController/view_bahan', 'refresh');
+    }
+        public function view_resep(){
+        $this->load->view('headerAdmin');
+        $data['resep'] = $this->Resep->get_all();
+        $this->load->view('viewTabelResep', $data);
+        $this->load->view('footer');
+    }
+    public function delete_resep($id_resep) {
+        $cek = $this->Resep->delete_resep($id_resep);
+        if ($cek){
+            redirect('AdminController/view_resep', 'refresh');    
         }
     }
 }

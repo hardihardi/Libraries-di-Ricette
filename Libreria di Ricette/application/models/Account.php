@@ -36,7 +36,16 @@ class Account extends CI_Model{
 			return false;
 		}
 	}
-    
+    public function is_admin($data) {
+        $this->db->where('username', $data['username']);
+        $this->db->where('password', $data['password']);
+        $isAdmin = $this->db->get('user')->row_array();
+        if ($isAdmin['isAdmin'] == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     // function untuk mengambil semua data akun yang ada di dalam database
     public function getakun($table)
 	{
