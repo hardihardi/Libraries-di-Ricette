@@ -16,6 +16,11 @@
             $this->db->where('idResep', $id_resep);
             return $this->db->get('resep')->row_array();
         }
+
+        function create_bahan_resep($data) {
+            return $this->db->insert('bahan_resep', $data);
+        }
+
         function get_resep_bahan($id_resep) {
             $this->db->where('idResep', $id_resep);
             return $this->db->get('bahan_resep')->result_array();
@@ -64,6 +69,7 @@
             $this->db->where('id_step', $id_step);
             return $this->db->delete('step_resep');
         }
+
         public function get_resep_keyword($keyword){
             $this->db->select('*');
             $this->db->from('resep');

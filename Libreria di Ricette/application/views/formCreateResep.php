@@ -8,18 +8,18 @@
 
 <!-- form input resep -->
     <div class="container align-items-center" style="margin-bottom: 75px">
-        <form action="" method="post">
+        <form action="<?= site_url('RecipeController/create_recipe') ?>" method="post">
             <div class="mb-3" style="margin-top: 20px">
                 <label class="form-label">Upload foto resepmu</label>
                 <input class="form-control" type="file" id="foto">
             </div>
             <div class="mb-3">
                 <label class="form-label">Judul</label>
-                <input type="text" class="form-control" id="judul" placeholder="Masukkan teks">
+                <input type="text" class="form-control" name="judul" placeholder="Masukkan teks">
             </div>
             <div class="mb-3">
                 <label class="form-label">Deskripsi</label>
-                <textarea class="form-control" id="deskripsi" rows="5" placeholder="Masukkan teks"></textarea>
+                <textarea class="form-control" name="deskripsi" rows="5" placeholder="Masukkan teks"></textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Bahan - Bahan</label>

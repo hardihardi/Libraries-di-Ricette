@@ -107,19 +107,64 @@ class RecipeController extends CI_Controller {
 
 	// function to create a recipe
 	public function create_recipe() {
-		$data = array(
+		$idMember = 'M-00005';
+		$idResep = 'resep15';
+		$data_resep = array(
+			'idMember' => $idMember,
+			'resepPic' => 'gambar.jpg',
+			'idResep' => $idResep,
+			'deskripsi' => $this->input->post('deskripsi'),
 			'judul' => $this->input->post('judul'),
-			'penulis' => $this->session->username,
-			'deskripisi' => $this->input->post('deskripsi'),
-			'bahan' => $this->input->post('bahan'),
-			'langkah' => $this->input->post('langkah'),
-			'rating' => 0,
+			'rating' => 0
 		);
+		$cek = $this->Resep->buat_resep($data_resep);
 
-		$cek = $this->Resep->buat_resep($data);
-		if ($cek) {
+		$bahan = $this->input->post('bahan[]');
+		$takaran = $this->input->post('takaran[]');
+		$cek1 = $this->_input_bahan_takaran($idResep, $bahan, $takaran);
+
+		$data_langkah = $this->input->post('langkah[]');
+		$cek2 = $this->_input_step_resep($idResep, $data_langkah);
+
+		if ($cek and $cek1 and $cek2) {
 			redirect('RecipeController', 'refresh');
 		}
+	}
+
+	private function _input_bahan_takaran($id_recipe, $bahan, $takaran) {
+		foreach ($bahan as $index => $b) {
+			$data_bahan = array(
+				'idBahan' => $b,
+				'idResep' => $id_recipe,
+				'takaran' => $takaran[$index]
+			);
+			$cek_bahan = $this->Resep->create_bahan_resep($data_bahan);
+			if (!$cek_bahan) {
+				return FALSE;
+			}
+		}
+		return TRUE;
+	}
+
+	private function _input_step_resep($id_recipe, $langkah) {
+		$idStep = 1;
+		$step = 1;
+		foreach ($langkah as $l) {
+			$data_langkah = array(
+				'idStep' => $idStep,
+				'idResep' => $id_recipe,
+				'deskripsi' => $l,
+				'stepKe' => $step,
+				'stepPic' => '-'
+			);
+			$cek_langkah = $this->Resep->tambah_langkah($data_langkah);
+			if (!$cek_langkah) {
+				return FALSE;
+			}
+			$idStep++;
+			$step++;
+		}
+		return TRUE;
 	}
 
 	// function to edit a recpie
@@ -165,6 +210,7 @@ class RecipeController extends CI_Controller {
 		$this->Resep->update_resep($id_recipe,$rating);
 		redirect('RecipeController/view_recipe/'.$id_recipe, 'refresh');
 	}
+
 	public function search(){
 		$keyword = $this->input->post('keyword');
 		$data['recipe']= $this->Resep->get_Resep_keyword($keyword);
