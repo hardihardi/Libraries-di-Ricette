@@ -28,4 +28,6 @@ class Review extends CI_Model
         $this->db->where('idResep', $id);
         return $this->db->get('review')->result_array();
     }
+
+
 }

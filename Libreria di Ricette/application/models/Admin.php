@@ -14,5 +14,15 @@ class Admin extends CI_Model{							//Kelas Admin untuk mengetahui apakah user m
     function add_relation_ref_bahan($data) {
         return $this->db->insert('toko_bahan', $data);
     }
+    function is_toko_bahan_duplicate($data){
+        $this->db->where('idBahan', $data['idBahan']);
+        $this->db->where('idToko', $data['idToko']);
+        return $this->db->get('toko_bahan')->row_array();
+    }
+    function delete_toko_from_bahan($data) {
+        $this->db->where('idBahan', $data['idBahan']);
+        $this->db->where('idToko', $data['idToko']);
+        return $this->db->delete('toko_bahan');
+    }
 }
 ?>

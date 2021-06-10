@@ -11,5 +11,16 @@
         	}
         	return $toko;
         }
+        function get_all_bahan(){
+            return $this->db->get('bahan')->result_array();
+        }
+        function delete_bahan($id_bahan){
+            $this->db->where('idBahan', $id_bahan);
+            return $this->db->delete('bahan');
+        }
+        function update_bahan($id_bahan, $data) {
+            $this->db->where('idBahan', $id_bahan);
+            return $this->db->update('bahan', $data);
+        }
 	}
  ?>

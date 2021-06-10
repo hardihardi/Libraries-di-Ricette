@@ -28,15 +28,15 @@
 <body>
     <!-- header-start -->
     <!-- Header berisi Home, Recipes, dan About -->
-    <header>
-        <div class="header-area ">
-            <div id="sticky-header" class="main-header-area ">
+    <header style="margin-bottom: 200px;">
+        <div class="header-area" style="background-color: rgb(255, 94, 19);">
+            <div id="sticky-header" class="main-header-area">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-2">
                             <div class="logo">
                                 <a href="index.html">
-                                    <img src="<?= base_url("assets/img/logo.png") ?>" alt="">
+                                    <img src="<?= base_url('assets/img/LogoLI.png') ?>" style="height: 100px; width:100px;">
                                 </a>
                             </div>
                         </div>
@@ -44,8 +44,9 @@
                             <div class="main-menu   d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="<?= base_url('viewMember')?>" style="color: white;">View User</a></li>
-                                        <li><a href="<?= base_url('addRefToko')?>" style="color: white;">view Bahan</a></li>
+                                        <li><a href="<?= base_url('index.php/AdminController')?>" style="color: white;">View User</a></li>
+                                        <li><a href="<?= base_url('index.php/AdminController/view_bahan')?>" style="color: white;">view Bahan</a></li>
+                                        <li><a href="<?= base_url('index.php/AdminController/view_toko')?>" style="color: white;">View Toko</a></li>
                                     </ul>
                                 </nav>
                             </div>
