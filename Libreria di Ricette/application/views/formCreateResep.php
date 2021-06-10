@@ -33,13 +33,16 @@
                     <div class="col-sm">
                         <input type="text" name="takaran[]" class="form-control" placeholder="Takaran" aria-label="Takaran">
                     </div>
-                    <a href="javascript:void(0);" class="add_button" title="Add field"><img src="add-icon.png"/></a>
+                    <a href="javascript:void(0);" class="add_button" title="Add bahan"><img src="add-icon.png"/></a>
                 </div>
             </div>
 
             <div class="mb-3" style="margin-top: 15px;">
                 <label class="form-label">Langkah Pembuatan</label>
-                <textarea class="form-control" id="langkah" rows="20" placeholder="Masukkan teks"></textarea>
+            </div>
+            <div class="mb-3 field_wrapper_langkah">
+                <input type="text" name="langkah[]" class="form-control" placeholder="Langkah" aria-label="Langkah">
+                <a href="javascript:void(0);" class="add_button_langkah" title="Add langkah"><img src="add-icon.png"/></a>
             </div>
             <div class="col text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -56,10 +59,15 @@
 <script type="text/javascript">
 $(document).ready(function(){
     var maxField = 10; //Input fields increment limitation
+    var maxFieldLangkah = 5;
     var addButton = $('.add_button'); //Add button selector
+    var addButtonLangkah = $('.add_button_langkah');
     var wrapper = $('.field_wrapper'); //Input field wrapper
+    var wrapperLangkah = $('.field_wrapper_langkah');
     var fieldHTML = '<div class="row g-3"><div class="col-sm-7"><input type="text" name="bahan[]" class="form-control" placeholder="Bahan" aria-label="Bahan"></div><div class="col-sm"><input type="text" name="takaran[]" class="form-control" placeholder="Takaran" aria-label="Takaran"></div><a href="javascript:void(0);" class="remove_button"><img src="remove-icon.png"/></a></div>'; //New input field html 
+    var fieldHTMLLangkah = '<div class="mb-3 field_wrapper_langkah"><input type="text" name="langkah[]" class="form-control" placeholder="Langkah" aria-label="Langkah"><a href="javascript:void(0);" class="remove_button_langkah"><img src="remove-icon.png"/></a></div>'
     var x = 1; //Initial field counter is 1
+    var y = 1;
     
     //Once add button is clicked
     $(addButton).click(function(){
@@ -69,12 +77,26 @@ $(document).ready(function(){
             $(wrapper).append(fieldHTML); //Add field html
         }
     });
+
+    $(addButtonLangkah).click(function(){
+        //Check maximum number of input fields
+        if(y < maxFieldLangkah){ 
+            y++; //Increment field counter
+            $(wrapperLangkah).append(fieldHTMLLangkah); //Add field html
+        }
+    });
     
     //Once remove button is clicked
     $(wrapper).on('click', '.remove_button', function(e){
         e.preventDefault();
         $(this).parent('div').remove(); //Remove field html
         x--; //Decrement field counter
+    });
+
+    $(wrapperLangkah).on('click', '.remove_button_langkah', function(e){
+        e.preventDefault();
+        $(this).parent('div').remove(); //Remove field html
+        y--; //Decrement field counter
     });
 });
 </script>
