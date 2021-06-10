@@ -55,7 +55,7 @@
                                     <form class="form-inline" style="float: right;">
                                         <ul class="navbar-nav ml-auto">
                                             <div class="topbar-divider d-none d-sm-block"></div>
-                                                <li class="nav-item dropdown no-arrow" style="background-color: rgb(255, 94, 19);;border-radius: 20px; padding-right: 10px; padding-left: 10px;">
+                                                <li class="nav-item dropdown no-arrow" style="background-color: rgb(255, 94, 19);border-radius: 20px; padding-right: 10px; padding-left: 10px;">
                                                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <img src="<?= base_url('assets\img\user.png') ?>" width="35">
                                                         <p class="user-name mr-2 d-none d-lg-inline text-dark" style="text-transform: uppercase;font-weight: 500"><?= $this->session->userdata('username') ?></p>
