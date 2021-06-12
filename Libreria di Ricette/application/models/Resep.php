@@ -66,11 +66,11 @@
 
         //function delete_langkah is use to deleting the steps in uploaded recipes
         function delete_langkah($id_step) {
-            $this->db->where('id_step', $id_step);
+            $this->db->where('idStep', $id_step);
             return $this->db->delete('step_resep');
         }
 
-        public function get_resep_keyword($keyword){
+        function get_resep_keyword($keyword){
             $this->db->select('*');
             $this->db->from('resep');
             $this->db->like('judul',$keyword);
@@ -87,6 +87,10 @@
                 $query = $this->db->get('resep',$limit, $start); 
                 return $query->result_array();
             }
+        }
+        function get_resep_by_user($id_member){
+            $this->db->where('idMember', $id_member);
+            return $this->db->get('resep')->result_array();
         }
     }
 ?>

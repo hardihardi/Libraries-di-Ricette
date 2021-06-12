@@ -185,6 +185,14 @@ class RecipeController extends CI_Controller {
 
 	// function to delete a recipe based on its id
 	public function delete_recipe($id_recipe) {
+		$review = $this->Review->getAllReview($id_recipe);
+		foreach ($review as $r) {
+			$this->Review->delete_review($r['idReview']);
+		}
+		$langkah = $this->Resep->get_langkah($id_recipe);
+		foreach ($langkah as $l) {
+			$this->Resep->delete_langkah($l['idStep']);
+		}
 		$cek = $this->Resep->delete_resep($id_recipe);
 		if ($cek) {
 			redirect('RecipeController', 'refresh');
