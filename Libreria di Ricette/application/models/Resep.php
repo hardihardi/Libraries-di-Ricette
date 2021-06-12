@@ -77,5 +77,16 @@
             $this->db->or_like('deskripsi',$keyword);
             return $this->db->get()->result_array();
         }
+        function get_resep_sorted($x, $limit,$start){
+            if ($x == 1){
+                $this->db->order_by("rating", "asc");
+                $query = $this->db->get('resep',$limit, $start); 
+                return $query->result_array();
+            } else {
+                $this->db->order_by("rating", "desc");
+                $query = $this->db->get('resep',$limit, $start); 
+                return $query->result_array();
+            }
+        }
     }
 ?>
