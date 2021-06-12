@@ -61,7 +61,7 @@
                                                         <p class="user-name mr-2 d-none d-lg-inline text-dark" style="text-transform: uppercase;font-weight: 500"><?= $this->session->userdata('username') ?></p>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                                        <a class="dropdown-item" href="<?= base_url('') ?>">
+                                                        <a class="dropdown-item" href="<?= base_url('/index.php/AccountController/view_profile/').$this->session->userdata('username') ?>">
                                                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                                             View User
                                                         </a>

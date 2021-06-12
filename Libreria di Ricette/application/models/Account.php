@@ -62,19 +62,14 @@ class Account extends CI_Model{
         }else{
             return false;
         }
-        
+
     }
 
     // function untuk mengambil data akun dari database berdasarkan username
     public function getakun_username($table,$username){
         $this->db->where('username',$username);
         $result = $this->db->get($table);
-        if($result->num_rows()==1){
-            return $result->result_array();
-        }else{
-            return false;
-        }
-        
+        return $result->row_array();   
     }
     
     // function untuk melakukan hapus suatu data akun dari database berdasarkan username

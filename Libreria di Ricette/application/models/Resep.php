@@ -17,6 +17,12 @@
             return $this->db->get('resep')->row_array();
         }
 
+        // get resep by Id_Member
+        function get_resep_member($id_member) {
+            $this->db->where('idMember', $id_member);
+            return $this->db->get('resep')->result_array();
+        }
+
         function create_bahan_resep($data) {
             return $this->db->insert('bahan_resep', $data);
         }
