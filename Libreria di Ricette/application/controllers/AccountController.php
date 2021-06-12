@@ -10,6 +10,7 @@ class AccountController extends CI_Controller {
 		$this->load->model('Account');
 		$this->load->model('Resep');
 		$this->load->model('Member');
+		$this->load->model('Review');
 	}
 
 	// function index that will take a user/guest to login page
@@ -72,5 +73,37 @@ class AccountController extends CI_Controller {
 			redirect('AccountController/view_profile/'.$user['username']);
 		}
 	}
+	public function delete_resep($id_resep) {
+        $review = $this->Review->getAllReview($id_resep);
+        foreach ($review as $r) {
+            $this->Review->delete_review($r['idReview']);
+        }
+        $langkah = $this->Resep->get_langkah($id_resep);
+        foreach ($langkah as $l) {
+            $this->Resep->delete_langkah($l['idStep']);
+        }
+        $cek = $this->Resep->delete_resep($id_resep);
+        if ($cek) {
+            redirect('RecipeController/', 'refresh');
+        }
+    }
+    public function delete_member($id_member) {
+        $review = $this->Review->getAllReviewByUser($id_member);
+        foreach ($review as $r) {
+            $this->Review->delete_review($r['idReview']);
+        }
+        $resep = $this->Resep->get_resep_by_user($id_member);
+        foreach ($resep as $r) {
+            $this->delete_resep($r['idResep']);
+        }
+        $member = $this->Member->get_member_id($id_member);
+        $cek = $this->Member->delete_member($id_member);
+
+        $this->Account->delete_akun($member['username']);
+        if ($cek){
+            $this->session->sess_destroy();
+			redirect(base_url());    
+        }
+    }
 }
 ?>

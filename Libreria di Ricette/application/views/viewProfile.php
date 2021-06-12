@@ -15,7 +15,7 @@
                     </div>
                     <div style="text-align: center;">
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalEditProfile">Edit Profile</button>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal">Delete Account</button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteMember">Delete Account</button>
                     </div>
                 </td>
 
@@ -71,7 +71,7 @@
   <div class="container">
     <div class="row" style="margin-bottom: 20px;">
       <div class="col-lg-6">
-        <h2 >Recipes of the Day</h2>
+        <h2 >Your Recipes</h2>
       </div> 
     </div>
     <div class="row">
@@ -106,7 +106,7 @@
           </table>
           <p></p>
           <a href="<?= base_url('index.php/RecipeController/view_recipe/').$resep_member[$index]['idResep'] ?>" class="genric-btn primary circle">View Full Recipe</a>
-          <a href="#" class="genric-btn danger circle">Delete Resep</a>
+          <a href="<?= base_url('index.php/AccountController/delete_resep/').$resep_member[$index]['idResep'] ?>" class="genric-btn danger circle">Delete Resep</a>
         </div>
       </div>
       <?php } ?>
@@ -147,6 +147,26 @@
             <div class="modal-footer">
                 <input type="submit" class="btn btn-primary rounded-0" id="virification" value="Submit" placeholder="Verify">
                   </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal delete Member -->
+<div class="modal fade" id="modalDeleteMember" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h4 class="display-4">Delete Member</h4>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="<?= site_url('AccountController/delete_member/').$member_info['idMember']?>">
+                    <div class="form-group">
+            <label >Are you sure you want to delete your account?</label>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary rounded-0" id="virification" value="Submit" placeholder="Verify">
+              </form>
             </div>
         </div>
     </div>
