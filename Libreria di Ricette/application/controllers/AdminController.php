@@ -11,6 +11,8 @@ class AdminController extends CI_Controller {
         $this->load->model('Bahan');
         $this->load->model('RefToko');
         $this->load->model('Resep');
+        $this->load->model('Review');
+        $this->load->model('Account');
 	}
 
     // function index that will take admin to admin's dashboard
@@ -119,12 +121,6 @@ class AdminController extends CI_Controller {
             redirect('AdminController/view_bahan', 'refresh');
         }
     }
-       public function delete_member($id_member) {
-        $cek = $this->Member->delete_member($id_member);
-        if ($cek){
-            redirect('AdminController', 'refresh');    
-        }
-    }
     public function add_bahan() {
         $data = array(
             'namaBahan' => $this->input->post('namaBahan'),
@@ -139,9 +135,34 @@ class AdminController extends CI_Controller {
         $this->load->view('footer');
     }
     public function delete_resep($id_resep) {
-        $cek = $this->Resep->delete_resep($id_resep);
+		$review = $this->Review->getAllReview($id_resep);
+		foreach ($review as $r) {
+			$this->Review->delete_review($r['idReview']);
+		}
+		$langkah = $this->Resep->get_langkah($id_resep);
+		foreach ($langkah as $l) {
+			$this->Resep->delete_langkah($l['idStep']);
+		}
+		$cek = $this->Resep->delete_resep($id_resep);
+		if ($cek) {
+			redirect('AdminController/view_resep', 'refresh');
+		}
+    }
+    public function delete_member($id_member) {
+        $review = $this->Review->getAllReviewByUser($id_member);
+        foreach ($review as $r) {
+            $this->Review->delete_review($r['idReview']);
+        }
+        $resep = $this->Resep->get_resep_by_user($id_member);
+        foreach ($resep as $r) {
+            $this->delete_resep($r['idResep']);
+        }
+        $member = $this->Member->get_member_id($id_member);
+        $cek = $this->Member->delete_member($id_member);
+
+        $this->Account->delete_akun($member['username']);
         if ($cek){
-            redirect('AdminController/view_resep', 'refresh');    
+            redirect('AdminController', 'refresh');    
         }
     }
 }

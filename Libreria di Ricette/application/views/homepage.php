@@ -30,7 +30,7 @@
 
 <!-- recepie_area_start  -->
 <!-- Menampilkan resep-resep yang tersedia, dapat dilakukan sort berdasarkan triteria tertentu, selain itu dapat juga dilakukan pencarian resep berdasarkan nama hidangan -->
-<div style="margin-bottom: 200px">
+<div style="margin-bottom: 50px">
   <div class="recepie_area">
   <div class="container">
     <div class="row" style="margin-bottom: 20px">
@@ -40,17 +40,24 @@
       <div class="col-lg-6">
         <?php echo form_open('RecipeController/search') ?>
         <div class="row">
-          <div class="input-group-icon mt-10 col-lg-9" style="outline-style: solid; outline-color: #ff5e13;">
+          <div class="input-group-icon mt-10 col-lg-8" style="outline-style: solid; outline-color: #ff5e13;">
             <div class="icon" style="margin-top: 10px"><i class="fa fa-search" aria-hidden="true"></i></div>
             <input type="text" name="keyword" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'" required="" class="single-input">
           </div>
-          <div class="col-lg-9" style="width: 15%;">
+          <div class="col-md-4" style="width: 15%;">
             <input type="submit" name="search_submit" value="Cari" class="genric-btn primary circle" style="border-bottom-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 5px; border-top-left-radius: 5px">
           </div>
-        </div>
         <?php echo form_close() ?>
+        </div>
       </div>
-      
+      <div style="width: 67%;">
+      </div>
+      <div style="width: 15%;">
+        <a href="<?= base_url('index.php/RecipeController/sort_resep/1')?>" class="genric-btn primary circle">Sorted Down</a>
+      </div>
+      <div style="width: 15%;">
+        <a href="<?= base_url('index.php/RecipeController/sort_resep/0')?>" class="genric-btn primary circle">Sorted Up</a>
+      </div>
     </div>
     <div class="row">
       <!-- content -->

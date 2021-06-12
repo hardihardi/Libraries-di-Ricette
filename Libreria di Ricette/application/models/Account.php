@@ -58,7 +58,7 @@ class Account extends CI_Model{
         $this->db->where('id',$id);
         $result = $this->db->get($table);
         if($result->num_rows()==1){
-            return $result->result_array();
+            return $result->row_array();
         }else{
             return false;
         }

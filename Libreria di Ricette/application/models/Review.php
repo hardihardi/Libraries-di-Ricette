@@ -28,6 +28,10 @@ class Review extends CI_Model
         $this->db->where('idResep', $id);
         return $this->db->get('review')->result_array();
     }
-
+    public function getAllReviewByUser($id)
+    {
+        $this->db->where('idMember', $id);
+        return $this->db->get('review')->result_array();
+    }
 
 }
