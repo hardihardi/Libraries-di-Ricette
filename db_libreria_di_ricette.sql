@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jun 2021 pada 04.50
+-- Waktu pembuatan: 14 Jun 2021 pada 14.49
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -114,7 +114,8 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`profilePic`, `idMember`, `username`, `nama`, `email`, `jenisKelamin`, `verified`, `ids`) VALUES
-('user.png', 'M-2', 'daffa', 'daffa', 'daffa@gmail.com', 1, 0, 2);
+('user.png', 'M-2', 'daffa', 'daffa', 'daffa@gmail.com', 1, 0, 2),
+('user.png', 'M-3', 'daffaharis', '123', '1213@gmail.com', 1, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -201,19 +202,9 @@ CREATE TABLE `step_resep` (
   `idResep` varchar(20) NOT NULL,
   `deskripsi` text NOT NULL,
   `stepKe` int(5) NOT NULL,
-  `stepPic` varchar(20) NOT NULL
+  `stepPic` varchar(20) NOT NULL,
+  `ids` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `step_resep`
---
-
-INSERT INTO `step_resep` (`idStep`, `idResep`, `deskripsi`, `stepKe`, `stepPic`) VALUES
-('Step-1', 'R-1', 'Cuci bersih ayam. Beri garam secukupnya, remas2. Diamkan 15 menit. Panaskan minyak secukupnya, tambahkan 1 sdm margarin. Goreng ayam hingga matang. Tiriskan.', 1, ''),
-('Step-2', 'R-1', 'Campur kecap manis, kecap inggris, saus tiram, dan saus tomat didalam mangkuk. Aduk rata.', 2, ''),
-('Step-3', 'R-1', 'Lelehkan 2 sdm margarin. Tumis bawang putih dan bawang bombay sampe harum. Masukkan campuran saus. Aduk rata. Tambahkan air bila perlu. Beri garam, gula, dan merica.', 3, ''),
-('Step-4', 'R-1', 'Masukkan ayam dan daun bawang. Aduk rata. Tumis hingga air meresap. Koreksi rasa.', 4, ''),
-('Step-5', 'R-1', 'Angkat dan sajikan.', 5, '');
 
 -- --------------------------------------------------------
 
@@ -252,6 +243,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`username`, `password`, `isAdmin`) VALUES
 ('daffa', '202cb962ac59075b964b07152d234b70', 0),
+('daffaharis', '202cb962ac59075b964b07152d234b70', 0),
 ('ujank', '202cb962ac59075b964b07152d234b70', 1);
 
 --
@@ -316,6 +308,7 @@ ALTER TABLE `review`
 --
 ALTER TABLE `step_resep`
   ADD PRIMARY KEY (`idStep`),
+  ADD UNIQUE KEY `ids` (`ids`),
   ADD KEY `fk_idResep_step_resep` (`idResep`);
 
 --
@@ -345,7 +338,7 @@ ALTER TABLE `bahan`
 -- AUTO_INCREMENT untuk tabel `member`
 --
 ALTER TABLE `member`
-  MODIFY `ids` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ids` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `ref_toko`
@@ -364,6 +357,12 @@ ALTER TABLE `resep`
 --
 ALTER TABLE `review`
   MODIFY `ids` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `step_resep`
+--
+ALTER TABLE `step_resep`
+  MODIFY `ids` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
