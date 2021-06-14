@@ -32,7 +32,13 @@ class AccountController extends CI_Controller {
 			$isAdmin = $this->Account->is_admin($data);
 		}
 		if ($masuk && !$isAdmin) {
-			$this->session->set_userdata('username', $data['username']);
+			$data_user = $this->Account->getakun_username($data['username']);
+
+			$data_session = array(
+				'username' => $data['username'],
+				'user_id' => $data_user['idMember']
+			);
+			$this->session->set_userdata($data_session);
 			redirect('recipeController');
 		} elseif ($masuk && $isAdmin) {
 			$this->session->set_userdata('username', $data['username']);

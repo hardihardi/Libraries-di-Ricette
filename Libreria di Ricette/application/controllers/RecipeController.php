@@ -109,14 +109,24 @@ class RecipeController extends CI_Controller {
 
 	// function to create a recipe
 	public function create_recipe() {
+		$config['upload_path']          = base_url('assets/img/');
+        $config['allowed_types']        = 'jpg|png';
+        $config['max_size']             = 500;
+        $config['max_width']            = 1024;
+        $config['max_height']           = 768;
+
+        $this->load->library('upload', $config);
+		$cek_upload = $this->upload->do_upload('userfile');
+		$file_name= $this->upload->data('file_name');
+
 		$x = $this->Resep->get_last_resep();
         if ($x == null) {
             $x['ids'] = 0;
         }
-		$idMember = 'M-00005';
+
 		$data_resep = array(
-			'idMember' => $idMember,
-			'resepPic' => 'gambar.jpg',
+			'idMember' => $this->session->user_id,
+			'resepPic' => $file_name,
 			'idResep' => 'R-'.$x['ids']+1,
 			'deskripsi' => $this->input->post('deskripsi'),
 			'judul' => $this->input->post('judul'),
@@ -126,12 +136,12 @@ class RecipeController extends CI_Controller {
 
 		$bahan = $this->input->post('bahan[]');
 		$takaran = $this->input->post('takaran[]');
-		$cek1 = $this->_input_bahan_takaran($idResep, $bahan, $takaran);
+		$cek1 = $this->_input_bahan_takaran($data_resep['idResep'], $bahan, $takaran);
 
 		$data_langkah = $this->input->post('langkah[]');
-		$cek2 = $this->_input_step_resep($idResep, $data_langkah);
+		$cek2 = $this->_input_step_resep($data_resep['idResep'], $data_langkah);
 
-		if ($cek and $cek1 and $cek2) {
+		if ($cek and $cek1 and $cek2 and $cek_upload) {
 			redirect('RecipeController', 'refresh');
 		}
 	}
@@ -152,9 +162,17 @@ class RecipeController extends CI_Controller {
 	}
 
 	private function _input_step_resep($id_recipe, $langkah) {
-		$idStep = 1;
+		$last_step = $this->Resep->get_last_step();
+        if ($last_step == null) {
+			$x = 0;
+        } else {
+			$x =$last_step['ids'] + 1;
+		}
+
 		$step = 1;
 		foreach ($langkah as $l) {
+			$idStep = "S-".$x;
+
 			$data_langkah = array(
 				'idStep' => $idStep,
 				'idResep' => $id_recipe,
@@ -166,7 +184,7 @@ class RecipeController extends CI_Controller {
 			if (!$cek_langkah) {
 				return FALSE;
 			}
-			$idStep++;
+			$x++;
 			$step++;
 		}
 		return TRUE;

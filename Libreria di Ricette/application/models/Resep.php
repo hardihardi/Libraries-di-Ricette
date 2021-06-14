@@ -102,7 +102,11 @@
             return $this->db->get('resep')->result_array();
         }
         function get_last_resep(){
-            return $this->db->select("*")->limit(1)->order_by('ids',"DESC")->get("rsep")->row_array();
+            return $this->db->select("*")->limit(1)->order_by('ids',"DESC")->get("resep")->row_array();
+        }
+
+        function get_last_step(){
+            return $this->db->select("*")->limit(1)->order_by('ids',"DESC")->get("step_resep")->row_array();
         }
     }
 ?>

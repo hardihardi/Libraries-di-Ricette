@@ -11,7 +11,7 @@
         <form action="<?= site_url('RecipeController/create_recipe') ?>" method="post">
             <div class="mb-3" style="margin-top: 20px">
                 <label class="form-label">Upload foto resepmu</label>
-                <input class="form-control" type="file" id="foto">
+                <input class="form-control" type="file" name="userfile"  id="foto">
             </div>
             <div class="mb-3">
                 <label class="form-label">Judul</label>
