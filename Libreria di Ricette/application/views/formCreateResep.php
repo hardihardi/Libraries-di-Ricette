@@ -28,7 +28,12 @@
             <div class="d-grid gap-3 field_wrapper">
                 <div class="row g-3">
                     <div class="col-sm-7">
-                        <input type="text" name="bahan[]" class="form-control" placeholder="Bahan" aria-label="Bahan">
+                        <select class="form-select" aria-label="Default select example" name="bahan[]">
+                            <option selected>Pilih bahan</option>
+                            <?php foreach ($bahan as $b) { ?>
+                                <option value="<?= $b['idBahan'] ?>"><?= $b['namaBahan'] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="col-sm">
                         <input type="text" name="takaran[]" class="form-control" placeholder="Takaran" aria-label="Takaran">
@@ -64,7 +69,16 @@ $(document).ready(function(){
     var addButtonLangkah = $('.add_button_langkah');
     var wrapper = $('.field_wrapper'); //Input field wrapper
     var wrapperLangkah = $('.field_wrapper_langkah');
-    var fieldHTML = '<div class="row g-3"><div class="col-sm-7"><input type="text" name="bahan[]" class="form-control" placeholder="Bahan" aria-label="Bahan"></div><div class="col-sm"><input type="text" name="takaran[]" class="form-control" placeholder="Takaran" aria-label="Takaran"></div><a href="javascript:void(0);" class="remove_button"><img src="remove-icon.png"/></a></div>'; //New input field html 
+    var fieldHTML = '<div class="row g-3">' +
+        '<div class="col-sm-7">' +
+            '<select class="form-select" aria-label="Default select example" name="bahan[]">' +
+                '<option selected>Pilih bahan</option>' +
+                '<code><?php foreach ($bahan as $b) { ?></code>' +
+                    '<option value="' +
+                    '<?= $b['idBahan'] ?>' +
+                    '"><code><?= $b['namaBahan'] ?></code></option>' +
+                '<code><?php } ?></code></select></div><div class="col-sm"><input type="text" name="takaran[]" class="form-control" placeholder="Takaran" aria-label="Takaran"></div><a href="javascript:void(0);" class="remove_button"><img src="remove-icon.png"/></a></div>'; //New input field html 
+    
     var fieldHTMLLangkah = '<div class="mb-3 field_wrapper_langkah"><input type="text" name="langkah[]" class="form-control" placeholder="Langkah" aria-label="Langkah"><a href="javascript:void(0);" class="remove_button_langkah"><img src="remove-icon.png"/></a></div>'
     var x = 1; //Initial field counter is 1
     var y = 1;

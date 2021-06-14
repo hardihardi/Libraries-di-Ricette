@@ -100,8 +100,10 @@ class RecipeController extends CI_Controller {
 
 	// function to load create recipe form
 	public function form_recipe() {
+		$data['bahan'] = $this->Bahan->get_all_bahan();
+
 		$this->load->view('header');
-		$this->load->view('formCreateResep');
+		$this->load->view('formCreateResep', $data);
 		$this->load->view('footer');
 	}
 
