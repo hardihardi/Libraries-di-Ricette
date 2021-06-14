@@ -14,5 +14,8 @@
             $this->db->where('idToko', $id_toko);
             return $this->db->delete('ref_toko');
         }
+         function get_last_toko(){
+            return $this->db->select("*")->limit(1)->order_by('ids',"DESC")->get("ref_toko")->row_array();
+        }
 	}
  ?>

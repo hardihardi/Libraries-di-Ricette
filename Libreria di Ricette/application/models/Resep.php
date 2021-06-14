@@ -84,19 +84,25 @@
             return $this->db->get()->result_array();
         }
         function get_resep_sorted($x, $limit,$start){
-            if ($x == 1){
+            if ($x == 'down') {
                 $this->db->order_by("rating", "asc");
                 $query = $this->db->get('resep',$limit, $start); 
                 return $query->result_array();
-            } else {
+            } else{
                 $this->db->order_by("rating", "desc");
                 $query = $this->db->get('resep',$limit, $start); 
                 return $query->result_array();
             }
+            $this->db->order_by("rating", "desc");
+            $query = $this->db->get('resep',$limit, $start); 
+            return $query->result_array();
         }
         function get_resep_by_user($id_member){
             $this->db->where('idMember', $id_member);
             return $this->db->get('resep')->result_array();
+        }
+        function get_last_resep(){
+            return $this->db->select("*")->limit(1)->order_by('ids',"DESC")->get("rsep")->row_array();
         }
     }
 ?>

@@ -28,7 +28,9 @@ class AccountController extends CI_Controller {
 			"password" => md5($this->input->post('password', true)),
 		];
 		$masuk = $this->Account->login($data);
-		$isAdmin = $this->Account->is_admin($data);
+		if ($masuk){
+			$isAdmin = $this->Account->is_admin($data);
+		}
 		if ($masuk && !$isAdmin) {
 			$this->session->set_userdata('username', $data['username']);
 			redirect('recipeController');

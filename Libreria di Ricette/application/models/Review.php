@@ -33,5 +33,7 @@ class Review extends CI_Model
         $this->db->where('idMember', $id);
         return $this->db->get('review')->result_array();
     }
-
+    function get_last_review(){
+        return $this->db->select("*")->limit(1)->order_by('ids',"DESC")->get("review")->row_array();
+    }
 }

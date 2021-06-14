@@ -43,7 +43,12 @@ class AdminController extends CI_Controller {
 
     // function to add ref toko
     public function add_toko() {
+        $x = $this->RefToko->get_last_toko();
+        if ($x == null) {
+            $x['ids'] = 0;
+        }
         $data = array(
+            'idToko' => 'T-'.$x['ids']+1,
             'namaToko' => $this->input->post('namaToko'),
             'alamat' => $this->input->post('alamat'),
         );
@@ -122,7 +127,12 @@ class AdminController extends CI_Controller {
         }
     }
     public function add_bahan() {
+        $x = $this->Bahan->get_last_bahan();
+        if ($x == null) {
+            $x['ids'] = 0;
+        }
         $data = array(
+            "idbahan" => 'B-'.$x['ids']+1,
             'namaBahan' => $this->input->post('namaBahan'),
         );
         $this->Bahan->create_bahan($data);

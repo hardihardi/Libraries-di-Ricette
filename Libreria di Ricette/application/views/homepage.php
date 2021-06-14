@@ -53,10 +53,10 @@
       <div style="width: 67%;">
       </div>
       <div style="width: 15%;">
-        <a href="<?= base_url('index.php/RecipeController/sort_resep/1')?>" class="genric-btn primary circle">Sorted Down</a>
+        <a href="<?= base_url('index.php/RecipeController/sort_resep/down')?>" class="genric-btn primary circle">Sorted Down</a>
       </div>
       <div style="width: 15%;">
-        <a href="<?= base_url('index.php/RecipeController/sort_resep/0')?>" class="genric-btn primary circle">Sorted Up</a>
+        <a href="<?= base_url('index.php/RecipeController/sort_resep/up')?>" class="genric-btn primary circle">Sorted Up</a>
       </div>
     </div>
     <div class="row">

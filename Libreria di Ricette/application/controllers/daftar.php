@@ -24,7 +24,12 @@ class daftar extends CI_Controller {
             "password" => md5($this->input->post('password', true)),
             "isAdmin" => 0
         );
+        $x = $this->Member->get_last_member();
+        if ($x == null) {
+            $x['ids'] = 0;
+        }
         $dataMember = array(
+            "idMember" => 'M-'.$x['ids']+1,
             "profilePic" => "user.png",
             "username" => $this->input->post('username', true),
             "nama" => $this->input->post('nama', true),

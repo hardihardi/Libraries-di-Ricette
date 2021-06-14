@@ -23,7 +23,10 @@
             return $this->db->update('bahan', $data);
         }
         function create_bahan($data) {
-        return $this->db->insert('bahan', $data);
-    }
+            return $this->db->insert('bahan', $data);
+        }
+        function get_last_bahan(){
+            return $this->db->select("*")->limit(1)->order_by('ids',"DESC")->get("bahan")->row_array();
+        }
 	}
  ?>

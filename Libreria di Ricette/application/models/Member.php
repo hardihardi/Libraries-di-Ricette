@@ -32,6 +32,9 @@
 			$this->db->where('idMember', $id_member);
 			return $this->db->delete('member');
 		}
+		function get_last_member(){
+			return $this->db->select("*")->limit(1)->order_by('ids',"DESC")->get("member")->row_array();
+		}
 
 	}
 ?>

@@ -107,12 +107,15 @@ class RecipeController extends CI_Controller {
 
 	// function to create a recipe
 	public function create_recipe() {
+		$x = $this->Resep->get_last_resep();
+        if ($x == null) {
+            $x['ids'] = 0;
+        }
 		$idMember = 'M-00005';
-		$idResep = 'resep15';
 		$data_resep = array(
 			'idMember' => $idMember,
 			'resepPic' => 'gambar.jpg',
-			'idResep' => $idResep,
+			'idResep' => 'R-'.$x['ids']+1,
 			'deskripsi' => $this->input->post('deskripsi'),
 			'judul' => $this->input->post('judul'),
 			'rating' => 0
@@ -199,9 +202,14 @@ class RecipeController extends CI_Controller {
 		}
 	}
 	public function add_review($id_recipe){
+		$x = $this->Review->get_last_review();
+        if ($x == null) {
+            $x['ids'] = 0;
+        }
 		$username = $this->session->userdata('username');
 		$member = $this->Member->get_member_username($username);
 		$data = array(
+			'idReview' => 'Rev-'.$x['ids']+1,
 			'rating' => $this->input->post('rating'),
 			'isi' => $this->input->post('isi'),
 			'idMember' => $member['idMember'],
