@@ -56,7 +56,7 @@ class AccountController extends CI_Controller {
 
 	// View profile
 	public function view_profile($username){
-		$content['member_info'] = $this->Account->getakun_username('member', $username);
+		$content['member_info'] = $this->Account->getakun_username($username);
 		$content['resep_member'] = $this->Resep->get_resep_member($content['member_info']['idMember']);
 		$this->load->view('header');
 		$this->load->view('viewProfile', $content);

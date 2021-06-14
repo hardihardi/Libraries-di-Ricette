@@ -16,12 +16,12 @@ class Account extends CI_Model{
     // function untuk melakukan pemeriksaan username pada database
     function cekid_daftar($username){
         $this->db->where('username',$username);
-        $cek = $this->db->get('user')->result_array();
-        if(isset($cek[0])){
-            return true;
+        $cek = $this->db->get('user')->row_array();
+        if($cek){
+            return false;
         }
         else{
-            return false;
+            return true;
         }
     }
 

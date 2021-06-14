@@ -37,13 +37,17 @@ class daftar extends CI_Controller {
             "jenisKelamin" => $this->input->post('jenisKelamin', true),
             "Verified" => 0,
         );
-
-        $daftar = $this->Account->register("user", $dataUser);
-        $daftar1 = $this->Member->buat_member($dataMember);
-        if ($daftar) {
-            redirect('AccountController');
+        $masuk = $this->Account->cekid_daftar($dataMember['username']);
+        if ($masuk){
+        	$daftar = $this->Account->register("user", $dataUser);
+        	$daftar1 = $this->Member->buat_member($dataMember);
+        	if ($daftar) {
+            	redirect('AccountController');
+        	} else {
+            	$this->load->view('register');
+        	}
         } else {
-            $this->load->view('register');
+        	$this->load->view('register');
         }
     }
 }
