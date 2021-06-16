@@ -6,6 +6,8 @@
   </div>
 </div>
 
+<?php echo form_open_multipart('RecipeController/create_recipe');?>
+
 <!-- form input resep -->
     <div class="container align-items-center" style="margin-bottom: 75px">
         <form action="<?= site_url('RecipeController/create_recipe') ?>" method="post">

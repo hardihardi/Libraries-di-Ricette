@@ -109,11 +109,11 @@ class RecipeController extends CI_Controller {
 
 	// function to create a recipe
 	public function create_recipe() {
-		$config['upload_path']          = base_url('assets/img/');
+		$config['upload_path']          = 'assets/img/';
         $config['allowed_types']        = 'jpg|png';
-        $config['max_size']             = 500;
-        $config['max_width']            = 1024;
-        $config['max_height']           = 768;
+        $config['max_size']             = 2000;
+        $config['max_width']            = 1920;
+        $config['max_height']           = 1080;
 
         $this->load->library('upload', $config);
 		$cek_upload = $this->upload->do_upload('userfile');
@@ -127,7 +127,7 @@ class RecipeController extends CI_Controller {
 		$data_resep = array(
 			'idMember' => $this->session->user_id,
 			'resepPic' => $file_name,
-			'idResep' => 'R-'.$x['ids']+1,
+			'idResep' => 'R-'.strval($x['ids']+1),
 			'deskripsi' => $this->input->post('deskripsi'),
 			'judul' => $this->input->post('judul'),
 			'rating' => 0
@@ -166,7 +166,7 @@ class RecipeController extends CI_Controller {
         if ($last_step == null) {
 			$x = 0;
         } else {
-			$x =$last_step['ids'] + 1;
+			$x =$last_step['ids'];
 		}
 
 		$step = 1;

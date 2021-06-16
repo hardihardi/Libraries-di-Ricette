@@ -29,7 +29,7 @@ class daftar extends CI_Controller {
             $x['ids'] = 0;
         }
         $dataMember = array(
-            "idMember" => 'M-'.$x['ids']+1,
+            "idMember" => 'M-'.strval($x['ids']+1),
             "profilePic" => "user.png",
             "username" => $this->input->post('username', true),
             "nama" => $this->input->post('nama', true),
