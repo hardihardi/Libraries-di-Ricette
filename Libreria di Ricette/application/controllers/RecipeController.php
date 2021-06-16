@@ -190,6 +190,18 @@ class RecipeController extends CI_Controller {
 		return TRUE;
 	}
 
+	// function to load edit recipe form
+	public function form_edit_recipe($id_recipe) {
+		$data['bahan'] = $this->Bahan->get_all_bahan();
+		$data['resep'] = $this->Resep->get_resep_id($id_recipe);
+		$data['bahan_resep'] = $this->Resep->get_resep_bahan($id_recipe);
+		$data['langkah'] = $this->Resep->get_langkah($id_recipe);
+
+		$this->load->view('header');
+		$this->load->view('formEditResep', $data);
+		$this->load->view('footer');
+	}
+
 	// function to edit a recpie
 	public function edit_recipe($id_recipe) {
 		$data = array(

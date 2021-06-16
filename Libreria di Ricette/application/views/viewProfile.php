@@ -9,7 +9,7 @@
                     <div class="img-profile mb-4" style="display: block; margin-left: auto; margin-right: auto;  width: 75%; text-align: center;">
                         <div class="row">
                             <div>
-                                <img src="#" class="img-thumbnail" width="200" height="250">
+                                <img src="<?= base_url('assets/img/'.$member_info['profilePic']) ?>" class="img-thumbnail" width="200" height="250">
                             </div>
                         </div>
                     </div>
