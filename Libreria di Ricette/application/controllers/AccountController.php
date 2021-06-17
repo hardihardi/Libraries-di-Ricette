@@ -92,7 +92,7 @@ class AccountController extends CI_Controller {
         }
         $cek = $this->Resep->delete_resep($id_resep);
         if ($cek) {
-            redirect('RecipeController/', 'refresh');
+            redirect('AccountController/view_profile/'.$this->session->username, 'refresh');
         }
     }
     public function delete_member($id_member) {

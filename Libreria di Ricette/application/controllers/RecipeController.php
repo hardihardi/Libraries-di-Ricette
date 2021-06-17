@@ -142,7 +142,7 @@ class RecipeController extends CI_Controller {
 		$cek2 = $this->_input_step_resep($data_resep['idResep'], $data_langkah);
 
 		if ($cek and $cek1 and $cek2 and $cek_upload) {
-			redirect('RecipeController', 'refresh');
+			redirect('RecipeController/view_recipe/'.$id_recipe, 'refresh');
 		}
 	}
 
@@ -204,18 +204,76 @@ class RecipeController extends CI_Controller {
 
 	// function to edit a recpie
 	public function edit_recipe($id_recipe) {
-		$data = array(
+		$data_resep = array(
+			'deskripsi' => $this->input->post('deskripsi'),
 			'judul' => $this->input->post('judul'),
-			'penulis' => $this->session->username,
-			'deskripisi' => $this->input->post('deskripsi'),
-			'bahan' => $this->input->post('bahan'),
-			'langkah' => $this->input->post('langkah'),
 		);
+		$cek = $this->Resep->update_resep($id_recipe, $data_resep);
 
-		$cek = $this->Resep->update_resep($id_recipe, $data);
-		if ($cek) {
-			redirect('RecipeController', 'refresh');
+		$bahan = $this->input->post('bahan[]');
+		$takaran = $this->input->post('takaran[]');
+		$cek1 = $this->_update_bahan_takaran($id_recipe, $bahan, $takaran);
+
+		$data_langkah = $this->input->post('langkah[]');
+		$cek2 = $this->_update_step_resep($id_recipe, $data_langkah);
+
+		if ($cek and $cek1 and $cek2) {
+			redirect('RecipeController/view_recipe/'.$id_recipe, 'refresh');
 		}
+	}
+
+	private function _update_bahan_takaran($id_recipe, $bahan, $takaran) {
+		$old_bahan = $this->Resep->get_resep_bahan($id_recipe);
+		foreach ($old_bahan as $ob) {
+			$this->Resep->delete_bahan_resep($id_recipe);
+		}
+
+		foreach ($bahan as $index => $b) {
+			$data_bahan = array(
+				'idBahan' => $b,
+				'idResep' => $id_recipe,
+				'takaran' => $takaran[$index]
+			);
+			$cek_bahan = $this->Resep->create_bahan_resep($data_bahan);
+			if (!$cek_bahan) {
+				return FALSE;
+			}
+		}
+		return TRUE;
+	}
+
+	private function _update_step_resep($id_recipe, $langkah) {
+		$last_step = $this->Resep->get_last_step();
+        if ($last_step == null) {
+			$x = 0;
+        } else {
+			$x =$last_step['ids'];
+		}
+
+		$old_langkah = $this->Resep->get_langkah($id_recipe);
+		foreach ($old_langkah as $ol) {
+			$this->Resep->delete_langkah($ol['idStep']);
+		}
+
+		$step = 1;
+		foreach ($langkah as $l) {
+			$idStep = "S-".$x;
+
+			$data_langkah = array(
+				'idStep' => $idStep,
+				'idResep' => $id_recipe,
+				'deskripsi' => $l,
+				'stepKe' => $step,
+				'stepPic' => '-'
+			);
+			$cek_langkah = $this->Resep->tambah_langkah($data_langkah);
+			if (!$cek_langkah) {
+				return FALSE;
+			}
+			$x++;
+			$step++;
+		}
+		return TRUE;
 	}
 
 	// function to delete a recipe based on its id
@@ -230,7 +288,7 @@ class RecipeController extends CI_Controller {
 		}
 		$cek = $this->Resep->delete_resep($id_recipe);
 		if ($cek) {
-			redirect('RecipeController', 'refresh');
+			redirect('AccountController/view_profile/'.$this->session->username, 'refresh');
 		}
 	}
 	public function add_review($id_recipe){

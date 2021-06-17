@@ -8,14 +8,14 @@
 
 <!-- form input resep -->
     <div class="container align-items-center" style="margin-bottom: 75px">
-        <form action="<?= site_url('RecipeController/create_recipe') ?>" method="post">
+        <form action="<?= site_url('RecipeController/edit_recipe/'.$resep['idResep']) ?>" method="post">
             <div class="mb-3">
                 <label class="form-label">Judul</label>
                 <input type="text" class="form-control" name="judul" placeholder="Masukkan teks" value="<?= $resep['judul'] ?>" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Deskripsi</label>
-                <textarea class="form-control" name="deskripsi" rows="5" placeholder="Masukkan teks" value="<?= $resep['deskripsi'] ?>" required></textarea>
+                <textarea class="form-control" name="deskripsi" rows="5" placeholder="Masukkan teks" required><?= $resep['deskripsi'] ?></textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Bahan - Bahan</label>
@@ -31,8 +31,8 @@
                         <div class="col-sm-7">
                             <select class="form-select" aria-label="Default select example" name="bahan[]" required>
                                 <option>Pilih bahan</option>
-                                <?php foreach ($bahan as $index => $b) {
-                                    if ($b['idBahan'] == $bahan_resep[$index]['idBahan']) {?>
+                                <?php foreach ($bahan as $b) {
+                                    if ($b['idBahan'] == $br['idBahan']) {?>
                                         <option selected value="<?= $b['idBahan'] ?>"><?= $b['namaBahan'] ?></option>
                                 <?php } else { ?>
                                         <option value="<?= $b['idBahan'] ?>"><?= $b['namaBahan'] ?></option>
@@ -41,7 +41,7 @@
                             </select>
                         </div>
                         <div class="col-sm">
-                            <input type="text" name="takaran[]" class="form-control" placeholder="Takaran" aria-label="Takaran" value="<?= $bahan_resep[$index]['takaran'] ?>" required>
+                            <input type="text" name="takaran[]" class="form-control" placeholder="Takaran" aria-label="Takaran" value="<?= $br['takaran'] ?>" required>
                         </div>
                         <?php if ($count == 1) { ?>
                             <a href="javascript:void(0);" class="add_button" title="Add bahan"><img height="30" src="<?= base_url('assets/img/add-icon.png') ?>"/></a>

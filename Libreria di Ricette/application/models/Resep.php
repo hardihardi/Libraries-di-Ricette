@@ -31,6 +31,12 @@
             $this->db->where('idResep', $id_resep);
             return $this->db->get('bahan_resep')->result_array();
         }
+
+        function delete_bahan_resep($id_resep) {
+            $this->db->where('idResep', $id_resep);
+            return $this->db->delete('bahan_resep');
+        }
+
         //function update_resep can use by the authors to updating their uploaded recipes
         function update_resep($id_resep, $data) {
             $this->db->where('idResep', $id_resep);

@@ -25,6 +25,11 @@
                     <h2><?= $recipe['judul'];?></h2>
                     <div class="resepies_details">
                         <ul>
+                            <?php if ($recipe['idMember'] == $this->session->user_id) { ?>
+                                <li><a href="<?= site_url('RecipeController/form_edit_recipe/'.$recipe['idResep']) ?>" style="background-color:rgb(255, 94, 19);" class="btn btn-primary">
+                                    Edit Resep
+                                </a></li>
+                            <?php } ?>
 							<li><p style="font-size: 16px;"><strong>Oleh</strong> <?= $member['username'];?><?php if ($member['verified'] == 1) {?>
                           <img src="<?= base_url('assets/img/check.png')?>" style="width: 20px; height: 20px;">
                       <?php } ?></p></li>
