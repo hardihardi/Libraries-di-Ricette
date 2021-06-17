@@ -1,3 +1,11 @@
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner" style="height: 400px">
+    <div class="carousel-item active">
+      <img src="<?= base_url("assets/img/3.jpg") ?>" class="d-block w-100">
+    </div>
+  </div>
+</div>
+
 <!-- Member Info Start -->
 <div style="margin-top:130px;">
     <div class="container mt-3" >
@@ -105,8 +113,9 @@
               </tr>
           </table>
           <p></p>
-          <a href="<?= base_url('index.php/RecipeController/view_recipe/').$resep_member[$index]['idResep'] ?>" class="genric-btn primary circle">View Full Recipe</a>
-          <a href="<?= base_url('index.php/AccountController/delete_resep/').$resep_member[$index]['idResep'] ?>" class="genric-btn danger circle">Delete Resep</a>
+          <a href="<?= base_url('index.php/RecipeController/view_recipe/').$resep_member[$index]['idResep'] ?>" class="genric-btn primary circle">View Recipe</a>
+          <a href="<?= base_url('index.php/AccountController/delete_resep/').$resep_member[$index]['idResep'] ?>" class="genric-btn danger circle">Delete Recipe</a>
+          <a href="<?= site_url('RecipeController/form_edit_recipe/'.$resep_member[$index]['idResep']) ?>" class="genric-btn warning circle" style= 'margin-top: 7px;'>Update Recipe</a>
         </div>
       </div>
       <?php } ?>
@@ -118,7 +127,7 @@
 <!-- recepie_area_end  -->
 
 <!-- Modal Modal -->
-
+<?php echo form_open_multipart('AccountController/edit_profile/'.$member_info['idMember']);?>
 <div class="modal fade" id="modalEditProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content rounded-0">
@@ -128,6 +137,8 @@
             <div class="modal-body">
                 <form method="POST" action="<?= site_url('AccountController/edit_profile/').$member_info['idMember'] ?>">
                     <div class="form-group">
+                        <label for="formGroupExampleInput"><b>Foto profil</b></label>
+                        <input class="form-control" type="file" name="fotoProfil"  id="formGroupExampleInput" required>
                         <label for="formGroupExampleInput"><b>Nama</b></label>
                         <input type="text" class="form-control" id="formGroupExampleInput" value="<?= $member_info['nama']?>" 
                             name="nama" required>

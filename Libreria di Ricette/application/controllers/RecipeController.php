@@ -142,7 +142,7 @@ class RecipeController extends CI_Controller {
 		$cek2 = $this->_input_step_resep($data_resep['idResep'], $data_langkah);
 
 		if ($cek and $cek1 and $cek2 and $cek_upload) {
-			redirect('RecipeController/view_recipe/'.$id_recipe, 'refresh');
+			redirect('RecipeController/view_recipe/'.$data_resep['idResep'], 'refresh');
 		}
 	}
 

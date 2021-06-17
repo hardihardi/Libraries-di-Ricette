@@ -65,7 +65,18 @@ class AccountController extends CI_Controller {
 
 	// Edit profile member
 	public function edit_profile($id_member){
+		$config['upload_path']          = 'assets/img/';
+        $config['allowed_types']        = 'jpg|png';
+        $config['max_size']             = 20000;
+        $config['max_width']            = 1920;
+        $config['max_height']           = 1080;
+
+        $this->load->library('upload', $config);
+		$cek_upload = $this->upload->do_upload('fotoProfil');
+		$file_name= $this->upload->data('file_name');
+
 		$data = array(
+			'profilePic' => $file_name, 
             'nama' => $this->input->post('nama'),
             'email' => $this->input->post('email'),
             'jenisKelamin' => $this->input->post('jenisKelamin'),
