@@ -89,6 +89,18 @@
             $this->db->or_like('deskripsi',$keyword);
             return $this->db->get()->result_array();
         }
+
+        function get_resep_keyword_not_id($keyword, $id_resep){
+            $this->db->select('*')->from('resep')
+                ->where('idResep !=', $id_resep)
+                ->group_start()
+                    ->like('judul',$keyword)
+                    ->or_like('deskripsi',$keyword)
+                ->group_end();
+            $this->db->order_by('rating', 'DESC');
+            return $this->db->get()->result_array();
+        }
+
         function get_resep_sorted($x, $limit,$start){
             if ($x == 'down') {
                 $this->db->order_by("rating", "asc");

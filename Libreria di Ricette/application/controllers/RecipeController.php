@@ -69,14 +69,16 @@ class RecipeController extends CI_Controller {
 	public function view_recipe($id_recipe) {
 		$content['recipe'] = $this->Resep->get_resep_id($id_recipe);
 		$content['langkah'] = $this->Resep->get_langkah($id_recipe);
+
 		//For Recommended Resep
-		$content['recResep'] = $this->Resep->get_all();
-		$recRes = $this->Resep->get_all();
+		$content['recResep'] = $this->_recipe_recommender($content['recipe']['judul'], $id_recipe);
+		$recRes = $content['recResep'];
 		$recMember =array();
 		foreach ($recRes as $y) {
 			$recMember[] = $this->Member->get_member_id($y['idMember']);
 		}
 		$content['recMember'] = $recMember;
+
 		//For Bahan resep
 		$bahanid = $this->Resep->get_resep_bahan($id_recipe);
 		$content['takaran'] = $bahanid;
@@ -106,6 +108,20 @@ class RecipeController extends CI_Controller {
 		$this->load->view('header');
 		$this->load->view('fullRecipe', $content);
 		$this->load->view('footer');
+	}
+
+	private function _recipe_recommender($recipe_title, $id_recipe) {
+		$keywords = explode(" ", $recipe_title);
+		$rec_list = [];
+
+		foreach ($keywords as $k) {
+			$append_me = $this->Resep->get_resep_keyword_not_id($k, $id_recipe);
+			$rec_list = array_merge($rec_list, $append_me);
+			if (count($rec_list) >= 3) {
+				break;
+			}
+		}
+		return array_slice($rec_list, 0, 3);
 	}
 
 	// function to load create recipe form
@@ -309,7 +325,7 @@ class RecipeController extends CI_Controller {
 		$username = $this->session->userdata('username');
 		$member = $this->Member->get_member_username($username);
 		$data = array(
-			'idReview' => 'Rev-'.$x['ids']+1,
+			'idReview' => 'Rev-'.strval($x['ids']+1),
 			'rating' => $this->input->post('rating'),
 			'isi' => $this->input->post('isi'),
 			'idMember' => $member['idMember'],
