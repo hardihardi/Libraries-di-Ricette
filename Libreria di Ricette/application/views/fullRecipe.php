@@ -128,6 +128,42 @@
 				</div>
             </div>
         </div>
+        <div class="row">
+        <h3>Recommended Recipe For you</h3>
+        <?php foreach (array_reverse($recResep) as $index =>$r) { ?>
+          <div class="col-xl-4 col-lg-4 col-md-6">
+            <img class="card-img-top" style="height: 250px;" src="<?= base_url('assets/img/').$recResep[$index]['resepPic'] ?>" alt="Card image cap">
+            <div class="card-body">
+              <h3 class="card-title"><?= $recResep[$index]['judul'] ?></h3>
+              <?php
+                $empty_star = 5 - $recResep[$index]['rating'];
+                for ($i = 0; $i < $recResep[$index]['rating']; $i++) {
+              ?>
+                  <span class="fa fa-star checked"></span>
+              <?php
+                }
+
+                for ($i = 0; $i < $empty_star; $i++) {
+              ?>
+                  <span class="fa fa-star"></span>
+              <?php } ?>
+              <p><?= $recResep[$index]['rating'] ?>/5</p>
+              <table> 
+                  <tr>  
+                      <td><p style="font-size: 16px;">By <?= $recMember[$index]['username'] ?></p></td>
+                      <td>  
+                          <?php if ($recMember[$index]['verified'] == 1) {?>
+                              <img src="<?= base_url('assets/img/check.png')?>" style="width: 20px; height: 20px;">
+                          <?php } ?>
+                      </td>
+                  </tr>
+              </table>
+              <p></p>
+              <a href="<?= base_url('index.php/RecipeController/view_recipe/').$recResep[$index]['idResep'] ?>" class="genric-btn primary circle">View Full Recipe</a>
+            </div>
+          </div>
+          <?php } ?>   
+        </div>
         <?php if ($this->session->has_userdata('username')) : ?>
 	    <div class="row">
 	    	<h3>Add Reviews</h3>

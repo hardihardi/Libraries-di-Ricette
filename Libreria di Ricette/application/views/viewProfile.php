@@ -30,7 +30,7 @@
                 <td>
                 <?= form_open('User/lihat_profile') ?>
                     <div class="form-group">
-                        <?= form_label('Nama') ?>
+                        <?= form_label('Name') ?>
                         <?= form_input(['name' => 'nama', 'class' => 'form-control', 'required' => 'required', 'value' => $member_info['nama'], 'readonly' => 'true']) ?>
                     </div>
                     <div class="form-group">
@@ -42,7 +42,7 @@
                         <?= form_input(['name' => 'email', 'class' => 'form-control', 'required' => 'required', 'value' =>  $member_info['email'], 'readonly' => 'true']) ?>
                     </div>
                     <div class="form-group">
-                        <?= form_label('Jenis Kelamin') ?>
+                        <?= form_label('Gender') ?>
                         <?php
                             if ($member_info['jenisKelamin'] == '1'){ ?>
                                 <?= form_input(['name' => 'jenis kelamin', 'class' => 'form-control', 'required' => 'required', 'value' => 'Laki-Laki', 'readonly' => 'true']); ?>

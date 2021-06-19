@@ -45,7 +45,7 @@
             <input type="text" name="keyword" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'" required="" class="single-input">
           </div>
           <div class="col-md-4" style="width: 15%;">
-            <input type="submit" name="search_submit" value="Cari" class="genric-btn primary circle" style="border-bottom-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 5px; border-top-left-radius: 5px">
+            <input type="submit" name="search_submit" value="Find" class="genric-btn primary circle" style="border-bottom-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 5px; border-top-left-radius: 5px">
           </div>
         <?php echo form_close() ?>
         </div>

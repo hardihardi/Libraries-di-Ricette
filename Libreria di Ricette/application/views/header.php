@@ -63,11 +63,11 @@
                                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                                         <a class="dropdown-item" href="<?= base_url('/index.php/AccountController/view_profile/').$this->session->userdata('username') ?>">
                                                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                            View User
+                                                            View Profile
                                                         </a>
         						                        <a class="dropdown-item" href="<?= base_url('/index.php/RecipeController/form_recipe') ?>">
                                                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                            Create Resep
+                                                            Create Recipe
                                                         </a>
                                                         <a class="dropdown-item" href="<?= base_url('/index.php/AccountController/logout') ?>">
                                                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

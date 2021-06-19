@@ -69,7 +69,15 @@ class RecipeController extends CI_Controller {
 	public function view_recipe($id_recipe) {
 		$content['recipe'] = $this->Resep->get_resep_id($id_recipe);
 		$content['langkah'] = $this->Resep->get_langkah($id_recipe);
-		
+		//For Recommended Resep
+		$content['recResep'] = $this->Resep->get_all();
+		$recRes = $this->Resep->get_all();
+		$recMember =array();
+		foreach ($recRes as $y) {
+			$recMember[] = $this->Member->get_member_id($y['idMember']);
+		}
+		$content['recMember'] = $recMember;
+		//For Bahan resep
 		$bahanid = $this->Resep->get_resep_bahan($id_recipe);
 		$content['takaran'] = $bahanid;
 		$arrBahan = array();
@@ -77,7 +85,7 @@ class RecipeController extends CI_Controller {
 			$arrBahan[] = $this->Bahan->get_bahan($x['idBahan']);	
 		}
 		$content['bahan'] = $arrBahan;
-
+		// For Review Resep
 		$reviewMember = $this->Review->getAllReview($id_recipe);
 		$content['review'] = $reviewMember;
 		$arrMember =array();
@@ -85,14 +93,16 @@ class RecipeController extends CI_Controller {
 			$arrMember[] = $this->Member->get_member_id($y['idMember']);
 		}
 		$content['memberReview'] = $arrMember;
-
+		// For member name in resep
 		$member = $this->Resep->get_resep_id($id_recipe);
 		$content['member'] = $this->Member->get_member_id($member['idMember']);
+		// for referensi toko
 		$toko = array();
 		foreach ($arrBahan as $index => $b) {
 			$toko[] = $this->Bahan->get_toko_bahan($b['idBahan']);
 		}
 		$content['toko'] = $toko;
+
 		$this->load->view('header');
 		$this->load->view('fullRecipe', $content);
 		$this->load->view('footer');
