@@ -164,7 +164,7 @@
           </div>
           <?php } ?>   
         </div>
-        <?php if ($this->session->has_userdata('username')) : ?>
+        <?php if ($this->session->has_userdata('username') and $this->session->user_id != $recipe['idMember']) : ?>
 	    <div class="row">
 	    	<h3>Add Reviews</h3>
 	    	<form id="feedback" method="POST" action="<?= site_url('RecipeController/add_review/').$recipe['idResep'] ?>">  
