@@ -38,7 +38,8 @@ class daftar extends CI_Controller {
             "Verified" => 0,
         );
         $masuk = $this->Account->cekid_daftar($dataMember['username']);
-        if ($masuk){
+        $masuk1 = $this->Account->cek_email_daftar($dataMember['email']);
+        if ($masuk and $masuk1){
         	$daftar = $this->Account->register("user", $dataUser);
         	$daftar1 = $this->Member->buat_member($dataMember);
         	if ($daftar) {

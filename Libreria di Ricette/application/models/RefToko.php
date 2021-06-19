@@ -14,8 +14,29 @@
             $this->db->where('idToko', $id_toko);
             return $this->db->delete('ref_toko');
         }
-         function get_last_toko(){
+        function get_last_toko(){
             return $this->db->select("*")->limit(1)->order_by('ids',"DESC")->get("ref_toko")->row_array();
         }
+        function cek_nama_toko($namaToko){
+            $this->db->where('namaToko',$namaToko);
+            $cek = $this->db->get('ref_toko')->row_array();
+            if($cek){
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+        function cek_alamat_toko($alamat){
+            $this->db->where('alamat',$alamat);
+            $cek = $this->db->get('ref_toko')->row_array();
+            if($cek){
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+
 	}
  ?>

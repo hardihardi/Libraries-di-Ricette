@@ -52,8 +52,17 @@ class AdminController extends CI_Controller {
             'namaToko' => $this->input->post('namaToko'),
             'alamat' => $this->input->post('alamat'),
         );
-        $this->Admin->create_ref_toko($data);
-        redirect('AdminController/view_toko', 'refresh');
+        $cek1 = $this->RefToko->cek_nama_toko($data['namaToko']);
+        if ($cek1){
+            $this->Admin->create_ref_toko($data);
+        } else {
+            $cek2 = $this->RefToko->cek_alamat_toko($data['alamat']);
+            if ($cek2){
+                $this->Admin->create_ref_toko($data);
+            }
+        }
+        redirect('AdminController/view_toko', 'refresh'); 
+        
     }
     public function delete_toko($id_toko) {
         $cek = $this->RefToko->delete_toko($id_toko);

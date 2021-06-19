@@ -24,6 +24,17 @@ class Account extends CI_Model{
             return true;
         }
     }
+    // function untuk melakukan pemeriksaan email pada database
+    function cek_email_daftar($email){
+        $this->db->where('email',$email);
+        $cek = $this->db->get('member')->row_array();
+        if($cek){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 
     // function untuk melakukan login dengan mencocokkan username dan password pada database
     public function login($data) {
